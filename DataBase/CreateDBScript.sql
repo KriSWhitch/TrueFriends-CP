@@ -1,0 +1,35 @@
+USE [master]
+GO
+DROP DATABASE [MAV_TrueFriends_CP];
+GO
+
+CREATE DATABASE [MAV_TrueFriends_CP];
+GO
+
+USE [MAV_TrueFriends_CP]
+GO
+
+CREATE TABLE [dbo].[User](
+	[User_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор пользовател€
+	[User_Login] [varchar](20) NULL, -- логин пользовател€
+	[User_Password] [varchar](30) NULL, -- пароль пользовател€
+	[User_Name] [varchar](20) NULL, -- им€ пользовател€
+	[User_Surname] [varchar](30) NULL, -- фамили€ пользовател€
+	[User_IsAdmin] [bit] NULL -- флаг €вл€етс€ ли пользователь администратором
+)
+GO
+
+CREATE TABLE [dbo].[Advert](
+	[Advert_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор объ€влени€
+	[Advert_FullName] [varchar](40) NULL, -- полное название объ€влени€
+	[Advert_ShortName] [varchar](20) NULL, -- сокращенное название объ€влени€
+	[Advert_Description] [varchar](2200) NULL, -- описание объ€влени€
+	[Advert_Images] [varbinary](max) NULL, -- картинки прикрепленные к объ€влению
+	[Advert_KindOfAnimal] [varchar](20) NULL, -- вид животного в объ€лении
+	[Advert_Creator] [int] NULL FOREIGN KEY ([Advert_Creator]) REFERENCES [User]([User_ID]) -- создатель объ€влени€
+)
+GO
+
+
+
+
