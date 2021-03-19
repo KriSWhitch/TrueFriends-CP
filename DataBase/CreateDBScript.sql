@@ -1,5 +1,6 @@
 USE [master]
 GO
+
 DROP DATABASE [MAV_TrueFriends_CP];
 GO
 
@@ -26,10 +27,17 @@ CREATE TABLE [dbo].[Advert](
 	[Advert_Description] [varchar](2200) NULL, -- описание объ€влени€
 	[Advert_Images] [varbinary](max) NULL, -- картинки прикрепленные к объ€влению
 	[Advert_KindOfAnimal] [varchar](20) NULL, -- вид животного в объ€лении
-	[Advert_Creator] [int] NULL FOREIGN KEY ([Advert_Creator]) REFERENCES [User]([User_ID]) -- создатель объ€влени€
+	[Advert_Creator] [int] NULL FOREIGN KEY ([Advert_Creator]) REFERENCES [User]([User_ID]), -- создатель объ€влени€
+	[Advert_CreationDate] [DateTime] NULL, -- дата создани€ объ€влени€
 )
 GO
 
-
+CREATE TABLE [dbo].[Comment](
+	[Comment_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор комментари€
+	[Comment_Text] [varchar](500) NULL, -- описание комментари€
+	[Comment_Creator] [int] NULL FOREIGN KEY ([Comment_Creator]) REFERENCES [User]([User_ID]), -- создатель комментари€
+	[Comment_CreationDate] [DateTime] NULL, -- дата создани€ комментари€
+)
+GO
 
 
