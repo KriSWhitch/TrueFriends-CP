@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "DZsslEirh9YJybpkHDaV7OHHG6A2/KumDeOqx/cLzoy7kxQmmqreR40Zlc9oZ1TDNJ9my6VHigifvwEeDo71ag==",
+  "success": true,
+  "projectFilePath": "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\materialdesignthemes.mahapps\\0.1.6\\materialdesignthemes.mahapps.0.1.6.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}
