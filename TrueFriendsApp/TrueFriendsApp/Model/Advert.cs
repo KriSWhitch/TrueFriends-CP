@@ -3,90 +3,67 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 
 namespace TrueFriendsApp
 {
     public class Advert
     {
-        public int id;
-        public string fullName;
-        public string shortName;
-        public string category;
-        public double raiting;
-        public decimal cost;
-        public int amount;
-        public List<Picture> images;
+        private int id;
+        private string fullName;
+        private string shortName;
+        private string category;
+        private double raiting;
+        private decimal cost;
+        private int amount;
+        private Picture image;
+        private ImageSource imageSource = null;
 
         public int ID // Идентификатор объявления
         { 
             get { return id; } 
-            set
-            {
-                id = value;
-                OnPropertyChanged("ID");
-            } 
+            set { id = value; } 
         } 
         public string FullName // Полное название товара
         {
             get { return fullName; }
-            set
-            {
-                fullName = value;
-                OnPropertyChanged("FullName");
-            }
+            set { fullName = value; }
         } 
         public string ShortName // Краткое название товара
         {
             get { return shortName; }
-            set
-            {
-                shortName = value;
-                OnPropertyChanged("ShortName");
-            }
+            set { shortName = value; }
         } 
         public string Category // Категория товара
         {
             get { return category; }
-            set
-            {
-                category = value;
-                OnPropertyChanged("Category");
-            }
+            set { category = value; }
         } 
         public double Raiting // Рейтинг товара
         {
             get { return raiting; }
-            set
-            {
-                raiting = value;
-                OnPropertyChanged("Raiting");
-            }
+            set { raiting = value; }
         } 
         public decimal Cost // Цена товара
         {
             get { return cost; }
-            set
-            {
-                cost = value;
-                OnPropertyChanged("Cost");
-            }
+            set { cost = value; }
         } 
         public int Amount // Количество товара на складе
         {
             get { return amount; }
-            set
-            {
-                amount = value;
-                OnPropertyChanged("Amount");
-            }
+            set { amount = value; }
         } 
-        public List<Picture> Images { get; set; } = new List<Picture>(); // Картинки к объявлению
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        public Picture Image 
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            get { return image; }
+            set { image = value; }
+        } // Картинка к объявлению
+
+        public ImageSource ImageSource
+        {
+            get { return imageSource; }
+            set { imageSource = value; }
         }
 
         public int GetID()

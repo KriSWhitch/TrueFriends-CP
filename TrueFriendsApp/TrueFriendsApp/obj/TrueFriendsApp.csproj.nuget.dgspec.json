@@ -42,6 +42,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "DevExpressMvvm": {
+              "target": "Package",
+              "version": "[20.2.3, )"
+            },
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.0.0, )"

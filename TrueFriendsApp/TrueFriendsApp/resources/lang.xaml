@@ -32,7 +32,7 @@
     <v:String x:Key="m_AdvertPage_Raiting">Raiting:</v:String>
     <v:String x:Key="m_AdvertPage_Cost">Cost:</v:String>
     <v:String x:Key="m_AdvertPage_Amount">Amount:</v:String>
-    <v:String x:Key="m_AdvertPage_Images">Photos:</v:String>
+    <v:String x:Key="m_AdvertPage_Images">Photo:</v:String>
     <!-- EditAdPage -->
     <v:String x:Key="m_EditAdPage_FullName">FullName:</v:String>
     <v:String x:Key="m_EditAdPage_ShortName">ShortName:</v:String>

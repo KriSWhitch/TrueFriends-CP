@@ -7,33 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="pages\AdvertPage.xaml.cs">
+    <Compile Update="View\AdvertPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\CreateAdPage.xaml.cs">
+    <Compile Update="View\CreateAdPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\EditAdPage.xaml.cs">
+    <Compile Update="View\EditAdPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\HomePage.xaml.cs">
+    <Compile Update="View\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="MainWindow.xaml">
+    <Page Update="View\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\AdvertPage.xaml">
+    <Page Update="View\AdvertPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\CreateAdPage.xaml">
+    <Page Update="View\CreateAdPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\EditAdPage.xaml">
+    <Page Update="View\EditAdPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\HomePage.xaml">
+    <Page Update="View\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="resources\lang.ru-RU.xaml">

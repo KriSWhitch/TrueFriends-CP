@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "DZsslEirh9YJybpkHDaV7OHHG6A2/KumDeOqx/cLzoy7kxQmmqreR40Zlc9oZ1TDNJ9my6VHigifvwEeDo71ag==",
+  "dgSpecHash": "reRLVHWqYWhKQaEEsK2GKlP1V8Z6QTPZ8Bl2g8JHQqoW0rDtMFBQnvPN59HCGyKNyl/xBlD3Bg5v9c3EIhkvqQ==",
   "success": true,
   "projectFilePath": "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\KriSWhitch\\.nuget\\packages\\devexpressmvvm\\20.2.3\\devexpressmvvm.20.2.3.nupkg.sha512",
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\materialdesigncolors\\2.0.0\\materialdesigncolors.2.0.0.nupkg.sha512",
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\materialdesignthemes\\4.0.0\\materialdesignthemes.4.0.0.nupkg.sha512",

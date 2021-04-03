@@ -3,8 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using TrueFriendsApp.ViewModel;
 
-namespace TrueFriendsApp.pages
+namespace TrueFriendsApp.View
 {
     /// <summary>
     /// Логика взаимодействия для AdvertPage.xaml
@@ -20,44 +21,7 @@ namespace TrueFriendsApp.pages
             var dataInRow = (DataGridRow)sender;
             advertObject = dataInRow.Item;
             this.mainForm = mainForm;
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            AdvertInGrid advert = (AdvertInGrid)advertObject;
-            AdFullNameTextBox.Text = advert.FullName;
-            AdShortNameTextBox.Text = advert.ShortName;
-            AdRaitingTextBox.Text = (advert.Raiting).ToString();
-            AdCategoryTextBox.Text = (advert.Category).ToString();
-            AdCostTextBox.Text = (advert.Cost).ToString();
-            AdAmountTextBox.Text = (advert.Amount).ToString();
-            for (var i = 0; i < advert.Images.Count; i++)
-            {
-                if (i == 0)
-                {
-                    AdMainImage.Source = ImageConverter.ImageSourceFromBitmap(advert.Images[0].Source);
-                    AdMainImageWrapper.Background = new SolidColorBrush(Colors.Transparent);
-                }
-
-                if (i == 1)
-                {
-                    AdSubImage1.Source = ImageConverter.ImageSourceFromBitmap(advert.Images[1].Source);
-                    AdSubImage1Wrapper.Background = new SolidColorBrush(Colors.Transparent);
-                }
-
-
-                if (i == 2)
-                {
-                    AdSubImage2.Source = ImageConverter.ImageSourceFromBitmap(advert.Images[2].Source);
-                    AdSubImage2Wrapper.Background = new SolidColorBrush(Colors.Transparent);
-                }
-
-                if (i == 3)
-                {
-                    AdSubImage3.Source = ImageConverter.ImageSourceFromBitmap(advert.Images[3].Source);
-                    AdSubImage3Wrapper.Background = new SolidColorBrush(Colors.Transparent);
-                }
-            }
+            DataContext = new AdvertPageViewModel((Advert)advertObject);
         }
 
         private void ButtonBackToHomePage_Click(object sender, RoutedEventArgs e)
@@ -72,7 +36,7 @@ namespace TrueFriendsApp.pages
             if (result == MessageBoxResult.Yes)
             {
                 List<Advert> adList = Serialization.Deserialize();
-                AdvertInGrid advert = (AdvertInGrid)advertObject;
+                Advert advert = (Advert)advertObject;
                 var item = adList.SingleOrDefault(x => x.ID == advert.ID);
                 if (item != null)
                 {
@@ -91,7 +55,7 @@ namespace TrueFriendsApp.pages
 
         private void ButtonEditAdvert_Click(object sender, RoutedEventArgs e)
         {
-            AdvertInGrid advert = (AdvertInGrid)advertObject;
+            Advert advert = (Advert)advertObject;
             mainForm.GridMain.Children.Clear();
             mainForm.GridMain.Children.Add(new EditAdPage(advert));
         }

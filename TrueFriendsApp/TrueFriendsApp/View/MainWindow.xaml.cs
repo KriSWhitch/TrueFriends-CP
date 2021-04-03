@@ -3,9 +3,10 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using TrueFriendsApp.pages;
+using TrueFriendsApp.View;
+using TrueFriendsApp.ViewModel;
 
-namespace TrueFriendsApp
+namespace TrueFriendsApp.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -15,6 +16,7 @@ namespace TrueFriendsApp
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
             Mouse.OverrideCursor = ((FrameworkElement)this.Resources["MouseCursor"]).Cursor;
             App.LanguageChanged += LanguageChanged;
 

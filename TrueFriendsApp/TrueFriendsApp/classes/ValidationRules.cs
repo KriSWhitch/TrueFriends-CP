@@ -18,7 +18,7 @@ namespace TrueFriendsApp
         }
         public static bool RaitingValidation(object value)
         {
-            Regex regex = new Regex(pattern: @"^(\d{1},\d{1})$|^(\d{1}|1[0])$");
+            Regex regex = new Regex(pattern: @"^(\d{1}.\d{1})$|^(\d{1}|1[0])$");
             return regex.IsMatch((string)value);
         }
         public static bool CostValidation(object value)
@@ -33,6 +33,7 @@ namespace TrueFriendsApp
         }
         public static bool CategoryValidation(string value)
         {
+            if (value == null) return false;
             return (value.Length > 0);
         }
     }
