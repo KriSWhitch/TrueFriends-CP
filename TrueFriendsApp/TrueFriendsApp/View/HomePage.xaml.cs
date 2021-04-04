@@ -14,32 +14,13 @@ using System.Windows.Shapes;
 namespace TrueFriendsApp.View
 {
     /// <summary>
-    /// Логика взаимодействия для HomePage.xaml
+    /// Логика взаимодействия для Home.xaml
     /// </summary>
     public partial class HomePage : UserControl
     {
-        MainWindow mainForm;
-
-        public HomePage(MainWindow mainForm)
+        public HomePage()
         {
-            this.mainForm = mainForm;
             InitializeComponent();
-        }
-
-        private void MainGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            List<Advert> adList = Serialization.Deserialize();
-            foreach (var el in adList)
-            {
-                el.ImageSource = ImageConverter.ImageSourceFromBitmap(el.Image.Source);
-            }
-            MainGrid.ItemsSource = adList;
-        }
-
-        private void RowDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            mainForm.GridMain.Children.Clear();
-            mainForm.GridMain.Children.Add(new AdvertPage(sender, e, mainForm));
         }
     }
 }

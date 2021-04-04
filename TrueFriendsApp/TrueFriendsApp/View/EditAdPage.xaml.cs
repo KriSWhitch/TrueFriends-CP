@@ -16,10 +16,9 @@ namespace TrueFriendsApp.View
     public partial class EditAdPage : UserControl
     {
 
-        public EditAdPage(Advert ad)
+        public EditAdPage()
         {
             InitializeComponent();
-            DataContext = new EditAdViewModel(ad, this);
         }
 
     }

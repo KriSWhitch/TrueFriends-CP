@@ -17,7 +17,6 @@ namespace TrueFriendsApp.View
         public CreateAdPage()
         {
             InitializeComponent();
-            DataContext = new CreateAdViewModel(this);
         }
 
     }

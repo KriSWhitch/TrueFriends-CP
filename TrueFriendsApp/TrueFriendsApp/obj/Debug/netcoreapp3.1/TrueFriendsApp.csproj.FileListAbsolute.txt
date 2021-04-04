@@ -43,3 +43,8 @@ F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\V
 F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\HomePage.baml
 F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\MainWindow.baml
 F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\FontAwesome.WPF.dll
+F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Extras.dll
+F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.Platform.dll
+F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\GalaSoft.MvvmLight.dll
+F:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\System.Windows.Interactivity.dll

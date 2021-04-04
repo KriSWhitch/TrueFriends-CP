@@ -21,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\HomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -31,9 +34,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\EditAdPage.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="resources\lang.ru-RU.xaml">

@@ -10,15 +10,15 @@
         <StackPanel Margin="10" Orientation="Vertical">
             <DockPanel Height="40" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonBackToHomePage" Click="ButtonBackToHomePage_Click" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Button x:Name="ButtonBackToHomePage" Command="{Binding buttonBackToHomePage}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <materialDesign:PackIcon Kind="ArrowLeft" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="ButtonEditAdvert" Click="ButtonEditAdvert_Click" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonEditAdvert" Command="{Binding buttonEditAdvert}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <materialDesign:PackIcon Kind="Edit" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
-                    <Button x:Name="ButtonDeleteAdvert" Click="ButtonDeleteAdvert_Click" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonDeleteAdvert" Command="{Binding buttonDeleteAdvert}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <materialDesign:PackIcon Kind="Delete" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
                 </StackPanel>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
              MinHeight="620" MinWidth="1220">
     <Grid Background="White">
         <StackPanel Margin="10" Orientation="Vertical">
@@ -11,24 +12,24 @@
                 <StackPanel Margin="0 10 80 10" Orientation="Horizontal">
                     <Label x:Name="AdFullNameLabel" Content="{DynamicResource m_EditAdPage_FullName}" FontSize="20" Width="180" Height="40"></Label>
                     <TextBox Text="{Binding FullName}" Margin="10 0 20 0" x:Name="AdFullNameTextBox" Foreground="Black" Width="300" Height="40" FontSize="20"></TextBox>
-                    <Image x:Name="FullNameValidationImage" Visibility="Hidden" VerticalAlignment="Top" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=FullNameValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="FullNameValidationImage" Visibility="{Binding Path=FullNameValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" VerticalAlignment="Top" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
                 <StackPanel Margin="0 10" Orientation="Horizontal">
                     <Label x:Name="AdShortNameLabel" Content="{DynamicResource m_EditAdPage_ShortName}" FontSize="20" Width="180" Height="40"></Label>
                     <TextBox Text="{Binding ShortName}" Margin="10 0 20 0" x:Name="AdShortNameTextBox" Foreground="Black" Width="300" Height="40" FontSize="20"></TextBox>
-                    <Image x:Name="ShortNameValidationImage" Visibility="Hidden" VerticalAlignment="Top" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=ShortNameValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="ShortNameValidationImage" Visibility="{Binding Path=ShortNameValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" VerticalAlignment="Top" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <StackPanel Margin="0 10 80 10" Orientation="Horizontal">
                     <Label x:Name="AdRaitingLabel" Content="{DynamicResource m_EditAdPage_Raiting}" FontSize="20" Width="180" Height="40"></Label>
                     <TextBox Text="{Binding Raiting}" Margin="10 0 20 0" x:Name="AdRaitingTextBox" Foreground="Black" Width="300" Height="40" FontSize="20"></TextBox>
-                    <Image x:Name="RaitingValidationImage" Visibility="Hidden" VerticalAlignment="Top" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=RaitingValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="RaitingValidationImage" Visibility="{Binding Path=RaitingValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" VerticalAlignment="Top" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
                 <StackPanel Margin="0 10" Orientation="Horizontal">
                     <Label x:Name="AdCostLabel" Content="{DynamicResource m_EditAdPage_Cost}" FontSize="20" Width="180" Height="40"></Label>
                     <TextBox Text="{Binding Cost}" Margin="10 0 20 0" x:Name="AdCostTextBox" Foreground="Black" Width="300" Height="40" FontSize="20"></TextBox>
-                    <Image x:Name="CostValidationImage" Visibility="Hidden" VerticalAlignment="Top" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=CostValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="CostValidationImage" Visibility="{Binding Path=CostValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" VerticalAlignment="Top" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left">
@@ -40,12 +41,12 @@
                         <TextBlock>Аксессуары</TextBlock>
                         <TextBlock>Прочее</TextBlock>
                     </ComboBox>
-                    <Image x:Name="CategoryValidationImage" Visibility="Hidden" VerticalAlignment="Top" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=CategoryValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="CategoryValidationImage" Visibility="{Binding Path=CategoryValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" VerticalAlignment="Top" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
                 <StackPanel Margin="0 10 0 10" Orientation="Horizontal">
                     <Label x:Name="AdAmountLabel" Content="{DynamicResource m_EditAdPage_Amount}" FontSize="20" Width="180" Height="40"></Label>
                     <TextBox Text="{Binding Amount}" Margin="10 0 20 0" x:Name="AdAmountTextBox" Foreground="Black" Width="300" Height="40" FontSize="20" Cursor="IBeam"></TextBox>
-                    <Image x:Name="AmountValidationImage" Visibility="Hidden" VerticalAlignment="Center" Width="40" Height="40" Source="../images/unchecked.png"></Image>
+                    <fa:ImageAwesome Icon="{Binding Path=AmountValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="AmountValidationImage" Visibility="{Binding Path=AmountValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left">

@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using DevExpress.Mvvm;
+using FontAwesome.WPF;
 using Microsoft.Win32;
 using TrueFriendsApp.View;
 
@@ -14,7 +15,7 @@ namespace TrueFriendsApp.ViewModel
 {
     class EditAdViewModel : ViewModelBase
     {
-        private EditAdPage view;
+        private MainWindow mainWindow;
 
         private int id;
         private string fullName;
@@ -114,9 +115,9 @@ namespace TrueFriendsApp.ViewModel
         }
 
 
-        public EditAdViewModel(Advert ad, EditAdPage view)
+        public EditAdViewModel(MainWindow mainWindow, Advert ad)
         {
-            this.view = view;
+            this.mainWindow = mainWindow;
 
             ID = ad.ID;
             FullName = ad.FullName;
@@ -227,67 +228,227 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
+        private FontAwesomeIcon fullNameValidationIcon;
+        private FontAwesomeIcon shortNameValidationIcon;
+        private FontAwesomeIcon raitingValidationIcon;
+        private FontAwesomeIcon costValidationIcon;
+        private FontAwesomeIcon amountValidationIcon;
+        private FontAwesomeIcon categoryValidationIcon;
+
+        private Visibility fullNameValidationIconVisibility;
+        private Visibility shortNameValidationIconVisibility;
+        private Visibility raitingValidationIconVisibility;
+        private Visibility costValidationIconVisibility;
+        private Visibility amountValidationIconVisibility;
+        private Visibility categoryValidationIconVisibility;
+
+        public FontAwesomeIcon FullNameValidationIcon
+        {
+            get
+            {
+                return fullNameValidationIcon;
+            }
+            set
+            {
+                fullNameValidationIcon = value;
+                RaisePropertyChanged("FullNameValidationIcon");
+            }
+        }
+        public FontAwesomeIcon ShortNameValidationIcon
+        {
+            get
+            {
+                return shortNameValidationIcon;
+            }
+            set
+            {
+                shortNameValidationIcon = value;
+                RaisePropertyChanged("ShortNameValidationIcon");
+            }
+        }
+        public FontAwesomeIcon RaitingValidationIcon
+        {
+            get
+            {
+                return raitingValidationIcon;
+            }
+            set
+            {
+                raitingValidationIcon = value;
+                RaisePropertyChanged("RaitingValidationIcon");
+            }
+        }
+        public FontAwesomeIcon CostValidationIcon
+        {
+            get
+            {
+                return costValidationIcon;
+            }
+            set
+            {
+                costValidationIcon = value;
+                RaisePropertyChanged("CostValidationIcon");
+            }
+        }
+        public FontAwesomeIcon AmountValidationIcon
+        {
+            get
+            {
+                return amountValidationIcon;
+            }
+            set
+            {
+                amountValidationIcon = value;
+                RaisePropertyChanged("AmountValidationIcon");
+            }
+        }
+        public FontAwesomeIcon CategoryValidationIcon
+        {
+            get
+            {
+                return categoryValidationIcon;
+            }
+            set
+            {
+                categoryValidationIcon = value;
+                RaisePropertyChanged("CategoryValidationIcon");
+            }
+        }
+
+        public Visibility FullNameValidationIconVisibility
+        {
+            get
+            {
+                return fullNameValidationIconVisibility;
+            }
+            set
+            {
+                fullNameValidationIconVisibility = value;
+                RaisePropertyChanged("FullNameValidationIconVisibility");
+            }
+        }
+        public Visibility ShortNameValidationIconVisibility
+        {
+            get
+            {
+                return shortNameValidationIconVisibility;
+            }
+            set
+            {
+                shortNameValidationIconVisibility = value;
+                RaisePropertyChanged("ShortNameValidationIconVisibility");
+            }
+        }
+        public Visibility RaitingValidationIconVisibility
+        {
+            get
+            {
+                return raitingValidationIconVisibility;
+            }
+            set
+            {
+                raitingValidationIconVisibility = value;
+                RaisePropertyChanged("RaitingValidationIconVisibility");
+            }
+        }
+        public Visibility CostValidationIconVisibility
+        {
+            get
+            {
+                return costValidationIconVisibility;
+            }
+            set
+            {
+                costValidationIconVisibility = value;
+                RaisePropertyChanged("CostValidationIconVisibility");
+            }
+        }
+        public Visibility AmountValidationIconVisibility
+        {
+            get
+            {
+                return amountValidationIconVisibility;
+            }
+            set
+            {
+                amountValidationIconVisibility = value;
+                RaisePropertyChanged("AmountValidationIconVisibility");
+            }
+        }
+        public Visibility CategoryValidationIconVisibility
+        {
+            get
+            {
+                return categoryValidationIconVisibility;
+            }
+            set
+            {
+                categoryValidationIconVisibility = value;
+                RaisePropertyChanged("CategoryValidationIconVisibility");
+            }
+        }
+
         private void CheckValidation(string fullName, string shortName, string raiting, string cost, string amount, string category)
         {
             if (ValidationRules.FullNameValidation(fullName))
             {
-                view.FullNameValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.FullNameValidationImage.Visibility = Visibility.Visible;
+                FullNameValidationIcon = FontAwesomeIcon.CheckCircle;
+                FullNameValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.FullNameValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.FullNameValidationImage.Visibility = Visibility.Visible;
+                FullNameValidationIcon = FontAwesomeIcon.MinusCircle;
+                FullNameValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.ShortNameValidation(shortName))
             {
-                view.ShortNameValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.ShortNameValidationImage.Visibility = Visibility.Visible;
+                ShortNameValidationIcon = FontAwesomeIcon.CheckCircle;
+                ShortNameValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.ShortNameValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.ShortNameValidationImage.Visibility = Visibility.Visible;
+                ShortNameValidationIcon = FontAwesomeIcon.MinusCircle;
+                ShortNameValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.RaitingValidation(raiting))
             {
-                view.RaitingValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.RaitingValidationImage.Visibility = Visibility.Visible;
+                RaitingValidationIcon = FontAwesomeIcon.CheckCircle;
+                RaitingValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.RaitingValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.RaitingValidationImage.Visibility = Visibility.Visible;
+                RaitingValidationIcon = FontAwesomeIcon.MinusCircle;
+                RaitingValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.CostValidation(cost))
             {
-                view.CostValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.CostValidationImage.Visibility = Visibility.Visible;
+                CostValidationIcon = FontAwesomeIcon.CheckCircle;
+                CostValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.CostValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.CostValidationImage.Visibility = Visibility.Visible;
+                CostValidationIcon = FontAwesomeIcon.MinusCircle;
+                CostValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.AmountValidation(amount))
             {
-                view.AmountValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.AmountValidationImage.Visibility = Visibility.Visible;
+                AmountValidationIcon = FontAwesomeIcon.CheckCircle;
+                AmountValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.AmountValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.AmountValidationImage.Visibility = Visibility.Visible;
+                AmountValidationIcon = FontAwesomeIcon.MinusCircle;
+                AmountValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.CategoryValidation(category))
             {
-                view.CategoryValidationImage.Source = new BitmapImage(new Uri("../images/checked.png", UriKind.Relative));
-                view.CategoryValidationImage.Visibility = Visibility.Visible;
+                CategoryValidationIcon = FontAwesomeIcon.CheckCircle;
+                CategoryValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                view.CategoryValidationImage.Source = new BitmapImage(new Uri("../images/unchecked.png", UriKind.Relative));
-                view.CategoryValidationImage.Visibility = Visibility.Visible;
+                CategoryValidationIcon = FontAwesomeIcon.MinusCircle;
+                CategoryValidationIconVisibility = Visibility.Visible;
             }
         }
 
