@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,10 +40,13 @@ namespace TrueFriendsApp.View
     /// </summary>
     public partial class MainWindow : Window, IMainWindowsCodeBehind
     {
+        private string connectionString;
         public MainWindow()
         {
             InitializeComponent();
+            //Пользовательская иконка мыши
             Mouse.OverrideCursor = ((FrameworkElement)this.Resources["MouseCursor"]).Cursor;
+            //Подключаем выбор языка приложения
             App.LanguageChanged += LanguageChanged;
             CultureInfo currLang = App.Language;
 

@@ -10,9 +10,7 @@
     <None Remove="arrow_bold.cur" />
     <None Remove="icon.ico" />
     <None Remove="images\arrow_bold.cur" />
-    <None Remove="images\checked.png" />
     <None Remove="images\icon.ico" />
-    <None Remove="images\unchecked.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,14 +20,13 @@
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.1.6" />
     <PackageReference Include="MvvmLight" Version="5.4.1.1" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="images\arrow_bold.cur" />
-    <Resource Include="images\checked.png" />
     <Resource Include="images\icon.ico" />
-    <Resource Include="images\unchecked.png" />
   </ItemGroup>
 
 </Project>

@@ -22,11 +22,13 @@ GO
 
 CREATE TABLE [dbo].[Advert](
 	[Advert_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор объ€влени€
-	[Advert_FullName] [varchar](40) NULL, -- полное название объ€влени€
-	[Advert_ShortName] [varchar](20) NULL, -- сокращенное название объ€влени€
-	[Advert_Description] [varchar](2200) NULL, -- описание объ€влени€
-	[Advert_Images] [varbinary](max) NULL, -- картинки прикрепленные к объ€влению
+	[Advert_FullName] [varchar](40) NOT NULL, -- полное название объ€влени€
+	[Advert_ShortName] [varchar](20) NOT NULL, -- сокращенное название объ€влени€
+	[Advert_AnimalAge] [int] NOT NULL, -- возраст животного
+	[Advert_AnimalWeight] [float] NOT NULL, -- вес животного
 	[Advert_KindOfAnimal] [varchar](20) NULL, -- вид животного в объ€лении
+	[Advert_Description] [varchar](2000) NULL, -- описание объ€влени€
+	[Advert_Image] [varbinary](max) NULL, -- картинки прикрепленные к объ€влению
 	[Advert_Creator] [int] NULL FOREIGN KEY ([Advert_Creator]) REFERENCES [User]([User_ID]), -- создатель объ€влени€
 	[Advert_CreationDate] [DateTime] NULL, -- дата создани€ объ€влени€
 )

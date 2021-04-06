@@ -20,10 +20,10 @@ namespace TrueFriendsApp.ViewModel
         private int id;
         private string fullName;
         private string shortName;
-        private string category;
-        private double raiting;
-        private decimal cost;
-        private int amount;
+        private string kindOfAnimal;
+        private string description;
+        private int animalAge;
+        private float animalWeight;
         private Picture image;
         private ImageSource imageSource;
 
@@ -54,43 +54,40 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ShortName");
             }
         }
-        public string Category // Категория товара
+        public string KindOfAnimal // Категория товара
         {
-            get { return category; }
+            get { return kindOfAnimal; }
             set
             {
-                category = value;
-                RaisePropertyChanged("Category");
+                kindOfAnimal = value;
+                RaisePropertyChanged("KindOfAnimal");
             }
         }
-        public double Raiting // Рейтинг товара
+        public string Description // Рейтинг товара
         {
-            get { return raiting; }
+            get { return description; }
             set
             {
-                if (raiting != value)
-                {
-                    raiting = value;
-                    RaisePropertyChanged("Raiting");
-                }
+                description = value;
+                RaisePropertyChanged("Description");
             }
         }
-        public decimal Cost // Цена товара
+        public float AnimalWeight // Цена товара
         {
-            get { return cost; }
+            get { return animalWeight; }
             set
             {
-                cost = value;
-                RaisePropertyChanged("Cost");
+                animalWeight = value;
+                RaisePropertyChanged("AnimalWeight");
             }
         }
-        public int Amount // Количество товара на складе
+        public int AnimalAge // Количество товара на складе
         {
-            get { return amount; }
+            get { return animalAge; }
             set
             {
-                amount = value;
-                RaisePropertyChanged("Amount");
+                animalAge = value;
+                RaisePropertyChanged("AnimalAge");
             }
         }
 
@@ -122,10 +119,10 @@ namespace TrueFriendsApp.ViewModel
             ID = ad.ID;
             FullName = ad.FullName;
             ShortName = ad.ShortName;
-            Raiting = ad.Raiting;
-            Cost = ad.Cost;
-            Category = ad.Category;
-            Amount = ad.Amount;
+            KindOfAnimal = ad.KindOfAnimal;
+            Description = ad.Description;
+            AnimalAge = ad.AnimalAge;
+            AnimalWeight = ad.AnimalWeight;
 
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
             //AdMainImageButtonClose.Visibility = Visibility.Visible;
@@ -184,23 +181,23 @@ namespace TrueFriendsApp.ViewModel
             (
                 ValidationRules.FullNameValidation(FullName + "") &&
                 ValidationRules.ShortNameValidation(ShortName + "") &&
-                ValidationRules.RaitingValidation(Raiting + "") &&
-                ValidationRules.CostValidation(Cost + "") &&
-                ValidationRules.CategoryValidation(Category + "") &&
-                ValidationRules.AmountValidation(Amount + "") &&
+                ValidationRules.KindOfAnimalValidation(KindOfAnimal + "") &&
+                ValidationRules.DescriptionValidation(Description + "") &&
+                ValidationRules.AnimalAgeValidation(AnimalAge + "") &&
+                ValidationRules.AnimalWeightValidation(AnimalWeight + "") &&
                 (ImageSource != null)
             ) completenessFlag = true;
-            CheckValidation(FullName + "", ShortName + "", Raiting + "", Cost + "", Amount + "", Category + "");
+            CheckValidation(FullName + "", ShortName + "", KindOfAnimal + "", Description + "", AnimalAge + "", AnimalWeight + "");
             if (completenessFlag)
             {
                 Advert ad = new Advert();
                 ad.ID = ID;
                 ad.FullName = FullName;
                 ad.ShortName = ShortName;
-                ad.Raiting = Raiting;
-                ad.Cost = Cost;
-                ad.Category = Category;
-                ad.Amount = Amount;
+                ad.KindOfAnimal = KindOfAnimal;
+                ad.Description = Description;
+                ad.AnimalAge = AnimalAge;
+                ad.AnimalWeight = AnimalWeight;
                 if (ImageSource != null) ad.Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
                 List<Advert> adList = Serialization.Deserialize();
                 var item = adList.SingleOrDefault(x => x.ID == ad.ID);
@@ -230,17 +227,17 @@ namespace TrueFriendsApp.ViewModel
 
         private FontAwesomeIcon fullNameValidationIcon;
         private FontAwesomeIcon shortNameValidationIcon;
-        private FontAwesomeIcon raitingValidationIcon;
-        private FontAwesomeIcon costValidationIcon;
-        private FontAwesomeIcon amountValidationIcon;
-        private FontAwesomeIcon categoryValidationIcon;
+        private FontAwesomeIcon kindOfAnimalValidationIcon;
+        private FontAwesomeIcon descriptionValidationIcon;
+        private FontAwesomeIcon animalAgeValidationIcon;
+        private FontAwesomeIcon animalWeightValidationIcon;
 
         private Visibility fullNameValidationIconVisibility;
         private Visibility shortNameValidationIconVisibility;
-        private Visibility raitingValidationIconVisibility;
-        private Visibility costValidationIconVisibility;
-        private Visibility amountValidationIconVisibility;
-        private Visibility categoryValidationIconVisibility;
+        private Visibility kindOfAnimalValidationIconVisibility;
+        private Visibility descriptionValidationIconVisibility;
+        private Visibility animalAgeValidationIconVisibility;
+        private Visibility animalWeightValidationIconVisibility;
 
         public FontAwesomeIcon FullNameValidationIcon
         {
@@ -266,52 +263,52 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ShortNameValidationIcon");
             }
         }
-        public FontAwesomeIcon RaitingValidationIcon
+        public FontAwesomeIcon KindOfAnimalValidationIcon
         {
             get
             {
-                return raitingValidationIcon;
+                return kindOfAnimalValidationIcon;
             }
             set
             {
-                raitingValidationIcon = value;
-                RaisePropertyChanged("RaitingValidationIcon");
+                kindOfAnimalValidationIcon = value;
+                RaisePropertyChanged("KindOfAnimalValidationIcon");
             }
         }
-        public FontAwesomeIcon CostValidationIcon
+        public FontAwesomeIcon DescriptionValidationIcon
         {
             get
             {
-                return costValidationIcon;
+                return descriptionValidationIcon;
             }
             set
             {
-                costValidationIcon = value;
-                RaisePropertyChanged("CostValidationIcon");
+                descriptionValidationIcon = value;
+                RaisePropertyChanged("DescriptionValidationIcon");
             }
         }
-        public FontAwesomeIcon AmountValidationIcon
+        public FontAwesomeIcon AnimalAgeValidationIcon
         {
             get
             {
-                return amountValidationIcon;
+                return animalAgeValidationIcon;
             }
             set
             {
-                amountValidationIcon = value;
-                RaisePropertyChanged("AmountValidationIcon");
+                animalAgeValidationIcon = value;
+                RaisePropertyChanged("AnimalAgeValidationIcon");
             }
         }
-        public FontAwesomeIcon CategoryValidationIcon
+        public FontAwesomeIcon AnimalWeightValidationIcon
         {
             get
             {
-                return categoryValidationIcon;
+                return animalWeightValidationIcon;
             }
             set
             {
-                categoryValidationIcon = value;
-                RaisePropertyChanged("CategoryValidationIcon");
+                animalWeightValidationIcon = value;
+                RaisePropertyChanged("AnimalWeightValidationIcon");
             }
         }
 
@@ -339,56 +336,56 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ShortNameValidationIconVisibility");
             }
         }
-        public Visibility RaitingValidationIconVisibility
+        public Visibility KindOfAnimalValidationIconVisibility
         {
             get
             {
-                return raitingValidationIconVisibility;
+                return kindOfAnimalValidationIconVisibility;
             }
             set
             {
-                raitingValidationIconVisibility = value;
-                RaisePropertyChanged("RaitingValidationIconVisibility");
+                kindOfAnimalValidationIconVisibility = value;
+                RaisePropertyChanged("KindOfAnimalValidationIconVisibility");
             }
         }
-        public Visibility CostValidationIconVisibility
+        public Visibility DescriptionValidationIconVisibility
         {
             get
             {
-                return costValidationIconVisibility;
+                return descriptionValidationIconVisibility;
             }
             set
             {
-                costValidationIconVisibility = value;
-                RaisePropertyChanged("CostValidationIconVisibility");
+                descriptionValidationIconVisibility = value;
+                RaisePropertyChanged("DescriptionValidationIconVisibility");
             }
         }
-        public Visibility AmountValidationIconVisibility
+        public Visibility AnimalAgeValidationIconVisibility
         {
             get
             {
-                return amountValidationIconVisibility;
+                return animalAgeValidationIconVisibility;
             }
             set
             {
-                amountValidationIconVisibility = value;
-                RaisePropertyChanged("AmountValidationIconVisibility");
+                animalAgeValidationIconVisibility = value;
+                RaisePropertyChanged("AnimalAgeValidationIconVisibility");
             }
         }
-        public Visibility CategoryValidationIconVisibility
+        public Visibility AnimalWeightValidationIconVisibility
         {
             get
             {
-                return categoryValidationIconVisibility;
+                return animalWeightValidationIconVisibility;
             }
             set
             {
-                categoryValidationIconVisibility = value;
-                RaisePropertyChanged("CategoryValidationIconVisibility");
+                animalWeightValidationIconVisibility = value;
+                RaisePropertyChanged("AnimalWeightValidationIconVisibility");
             }
         }
 
-        private void CheckValidation(string fullName, string shortName, string raiting, string cost, string amount, string category)
+        private void CheckValidation(string fullName, string shortName, string kindOfAnimal, string description, string animalAge, string animalWeight)
         {
             if (ValidationRules.FullNameValidation(fullName))
             {
@@ -410,45 +407,45 @@ namespace TrueFriendsApp.ViewModel
                 ShortNameValidationIcon = FontAwesomeIcon.MinusCircle;
                 ShortNameValidationIconVisibility = Visibility.Visible;
             }
-            if (ValidationRules.RaitingValidation(raiting))
+            if (ValidationRules.KindOfAnimalValidation(kindOfAnimal))
             {
-                RaitingValidationIcon = FontAwesomeIcon.CheckCircle;
-                RaitingValidationIconVisibility = Visibility.Visible;
+                KindOfAnimalValidationIcon = FontAwesomeIcon.CheckCircle;
+                KindOfAnimalValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                RaitingValidationIcon = FontAwesomeIcon.MinusCircle;
-                RaitingValidationIconVisibility = Visibility.Visible;
+                KindOfAnimalValidationIcon = FontAwesomeIcon.MinusCircle;
+                KindOfAnimalValidationIconVisibility = Visibility.Visible;
             }
-            if (ValidationRules.CostValidation(cost))
+            if (ValidationRules.DescriptionValidation(description))
             {
-                CostValidationIcon = FontAwesomeIcon.CheckCircle;
-                CostValidationIconVisibility = Visibility.Visible;
-            }
-            else
-            {
-                CostValidationIcon = FontAwesomeIcon.MinusCircle;
-                CostValidationIconVisibility = Visibility.Visible;
-            }
-            if (ValidationRules.AmountValidation(amount))
-            {
-                AmountValidationIcon = FontAwesomeIcon.CheckCircle;
-                AmountValidationIconVisibility = Visibility.Visible;
+                DescriptionValidationIcon = FontAwesomeIcon.CheckCircle;
+                DescriptionValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                AmountValidationIcon = FontAwesomeIcon.MinusCircle;
-                AmountValidationIconVisibility = Visibility.Visible;
+                DescriptionValidationIcon = FontAwesomeIcon.MinusCircle;
+                DescriptionValidationIconVisibility = Visibility.Visible;
             }
-            if (ValidationRules.CategoryValidation(category))
+            if (ValidationRules.AnimalAgeValidation(animalAge))
             {
-                CategoryValidationIcon = FontAwesomeIcon.CheckCircle;
-                CategoryValidationIconVisibility = Visibility.Visible;
+                AnimalAgeValidationIcon = FontAwesomeIcon.CheckCircle;
+                AnimalAgeValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                CategoryValidationIcon = FontAwesomeIcon.MinusCircle;
-                CategoryValidationIconVisibility = Visibility.Visible;
+                AnimalAgeValidationIcon = FontAwesomeIcon.MinusCircle;
+                AnimalAgeValidationIconVisibility = Visibility.Visible;
+            }
+            if (ValidationRules.AnimalWeightValidation(animalWeight))
+            {
+                AnimalWeightValidationIcon = FontAwesomeIcon.CheckCircle;
+                AnimalWeightValidationIconVisibility = Visibility.Visible;
+            }
+            else
+            {
+                AnimalWeightValidationIcon = FontAwesomeIcon.MinusCircle;
+                AnimalWeightValidationIconVisibility = Visibility.Visible;
             }
         }
 

@@ -18,10 +18,10 @@ namespace TrueFriendsApp.ViewModel
         private int id;
         private string fullName;
         private string shortName;
-        private string category;
-        private double raiting;
-        private decimal cost;
-        private int amount;
+        private string kindOfAnimal;
+        private string description;
+        private int animalAge;
+        private float animalWeight;
         private Picture image;
         private ImageSource imageSource;
         public Advert Ad // Объявление
@@ -60,43 +60,40 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ShortName");
             }
         }
-        public string Category // Категория товара
+        public string KindOfAnimal // Категория товара
         {
-            get { return category; }
+            get { return kindOfAnimal; }
             set
             {
-                category = value;
-                RaisePropertyChanged("Category");
+                kindOfAnimal = value;
+                RaisePropertyChanged("KindOfAnimal");
             }
         }
-        public double Raiting // Рейтинг товара
+        public string Description // Рейтинг товара
         {
-            get { return raiting; }
+            get { return description; }
             set
             {
-                if (raiting != value)
-                {
-                    raiting = value;
-                    RaisePropertyChanged("Raiting");
-                }
+                description = value;
+                RaisePropertyChanged("Description");
             }
         }
-        public decimal Cost // Цена товара
+        public float AnimalWeight // Цена товара
         {
-            get { return cost; }
+            get { return animalWeight; }
             set
             {
-                cost = value;
-                RaisePropertyChanged("Cost");
+                animalWeight = value;
+                RaisePropertyChanged("AnimalWeight");
             }
         }
-        public int Amount // Количество товара на складе
+        public int AnimalAge // Количество товара на складе
         {
-            get { return amount; }
+            get { return animalAge; }
             set
             {
-                amount = value;
-                RaisePropertyChanged("Amount");
+                animalAge = value;
+                RaisePropertyChanged("AnimalAge");
             }
         }
 
@@ -127,10 +124,10 @@ namespace TrueFriendsApp.ViewModel
             ID = ad.ID;
             FullName = ad.FullName;
             ShortName = ad.ShortName;
-            Raiting = ad.Raiting;
-            Cost = ad.Cost;
-            Category = ad.Category;
-            Amount = ad.Amount;
+            KindOfAnimal = ad.KindOfAnimal;
+            Description = ad.Description;
+            AnimalWeight = ad.AnimalWeight;
+            AnimalAge = ad.AnimalAge;
             Image = ad.Image;
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
         }
@@ -141,10 +138,10 @@ namespace TrueFriendsApp.ViewModel
             ID = ad.ID;
             FullName = ad.FullName;
             ShortName = ad.ShortName;
-            Raiting = ad.Raiting;
-            Cost = ad.Cost;
-            Category = ad.Category;
-            Amount = ad.Amount;
+            KindOfAnimal = ad.KindOfAnimal;
+            Description = ad.Description;
+            AnimalWeight = ad.AnimalWeight;
+            AnimalAge = ad.AnimalAge;
             Image = ad.Image;
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
         }

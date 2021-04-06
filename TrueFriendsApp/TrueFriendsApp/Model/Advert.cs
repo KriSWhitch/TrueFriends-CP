@@ -12,10 +12,10 @@ namespace TrueFriendsApp
         private int id;
         private string fullName;
         private string shortName;
-        private string category;
-        private double raiting;
-        private decimal cost;
-        private int amount;
+        private string kindOfAnimal;
+        private string description;
+        private int animalAge;
+        private float animalWeight;
         private Picture image;
         private ImageSource imageSource = null;
 
@@ -24,42 +24,41 @@ namespace TrueFriendsApp
             get { return id; } 
             set { id = value; } 
         } 
-        public string FullName // Полное название товара
+        public string FullName // Полное название объявления
         {
             get { return fullName; }
             set { fullName = value; }
         } 
-        public string ShortName // Краткое название товара
+        public string ShortName // Краткое название объявления
         {
             get { return shortName; }
             set { shortName = value; }
-        } 
-        public string Category // Категория товара
+        }
+        public int AnimalAge // Возраст животного
         {
-            get { return category; }
-            set { category = value; }
-        } 
-        public double Raiting // Рейтинг товара
+            get { return animalAge; }
+            set { animalAge = value; }
+        }
+        public float AnimalWeight // Количество товара на складе
         {
-            get { return raiting; }
-            set { raiting = value; }
-        } 
-        public decimal Cost // Цена товара
+            get { return animalWeight; }
+            set { animalWeight = value; }
+        }
+        public string KindOfAnimal // Вид животного
         {
-            get { return cost; }
-            set { cost = value; }
+            get { return kindOfAnimal; }
+            set { kindOfAnimal = value; }
         } 
-        public int Amount // Количество товара на складе
+        public string Description // Описание объявления
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return description; }
+            set { description = value; }
         } 
         public Picture Image 
         {
             get { return image; }
             set { image = value; }
         } // Картинка к объявлению
-
         public ImageSource ImageSource
         {
             get { return imageSource; }

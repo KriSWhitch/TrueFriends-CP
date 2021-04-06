@@ -28,28 +28,21 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnCategory}" Binding="{Binding Category}" Width="2*">
+                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnKindOfAnimal}" Binding="{Binding KindOfAnimal}" Width="2*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnRaiting}" Binding="{Binding Raiting}"  Width="*">
+                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnAnimalAge}" Binding="{Binding AnimalAge}"  Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnCost}" Binding="{Binding Cost}"  Width="2*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnAmount}" Binding="{Binding Amount}"  Width="2*">
+                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnAnimalWeight}" Binding="{Binding AnimalWeight}"  Width="2*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
