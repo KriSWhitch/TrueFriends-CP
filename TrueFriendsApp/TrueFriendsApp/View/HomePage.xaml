@@ -7,61 +7,42 @@
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:TrueFriendsApp.View"
              mc:Ignorable="d" 
-             MinHeight="620" MinWidth="1220">
+             MinHeight="620" MinWidth="1200">
     <Grid Background="White">
-        <DataGrid x:Name="MainGrid" ItemsSource="{Binding AdList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" Foreground="Black">
+        <ListBox Grid.Column="2" x:Name="MainGrid" ItemsSource="{Binding AdList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Foreground="Black">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <cmd:EventToCommand Command="{Binding rowDoubleClick}"  
                                 CommandParameter="{Binding ElementName=MainGrid, Path=SelectedItem}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnName}" Binding="{Binding ShortName}" Width="3*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnKindOfAnimal}" Binding="{Binding KindOfAnimal}" Width="2*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnAnimalAge}" Binding="{Binding AnimalAge}"  Width="*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="{DynamicResource m_HomePage_ColumnAnimalWeight}" Binding="{Binding AnimalWeight}"  Width="2*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTemplateColumn Header="{DynamicResource m_HomePage_ColumnImages}" Width="2*">
-                    <DataGridTemplateColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>
-                    </DataGridTemplateColumn.HeaderStyle>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding ImageSource}" Width="64" Height="64"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5" Orientation="Vertical">
+                        <Image HorizontalAlignment="Center" Source="{Binding Path=ImageSource}" Width="350" Height="210"/>
+                        <StackPanel Orientation="Vertical" Width="330">
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=ShortName}" Margin="5 5 0 10"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Возраст:" FontSize="14"></Label>
+                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=AnimalAge}" />
+                                </StackPanel>
+                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Вес:" FontSize="14"></Label>
+                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=AnimalWeight}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>
