@@ -40,7 +40,7 @@ namespace TrueFriendsApp.View
     /// </summary>
     public partial class MainWindow : Window, IMainWindowsCodeBehind
     {
-        private string connectionString;
+
         public MainWindow()
         {
             InitializeComponent();

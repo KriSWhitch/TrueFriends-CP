@@ -15,7 +15,7 @@ namespace TrueFriendsApp.ViewModel
             this.mainForm = mainForm;
         }
 
-        private List<Advert> adList = Serialization.Deserialize();
+        private List<Advert> adList = DB.GetAdverts();
         private Advert selectedItem;
 
         public List<Advert> AdList

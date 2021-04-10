@@ -21,7 +21,7 @@ namespace TrueFriendsApp.ViewModel
         private string kindOfAnimal;
         private string description;
         private int animalAge;
-        private float animalWeight;
+        private decimal animalWeight;
         private Picture image;
         private ImageSource imageSource;
         public Advert Ad // Объявление
@@ -78,7 +78,7 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("Description");
             }
         }
-        public float AnimalWeight // Цена товара
+        public decimal AnimalWeight // Цена товара
         {
             get { return animalWeight; }
             set
@@ -158,19 +158,8 @@ namespace TrueFriendsApp.ViewModel
             MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить объявление?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                List<Advert> adList = Serialization.Deserialize();
-                var item = adList.SingleOrDefault(x => x.ID == ID);
-                if (item != null)
-                {
-                    adList.Remove(item);
-                    Serialization.Serialize(adList);
-                    mainForm.LoadView(ViewType.Main);
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка!", "Сообщение об ошибке", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
+                DB.DeleteAdvert(ID);
+                mainForm.LoadView(ViewType.Main);
             }
         }
         public ICommand buttonEditAdvert => new DelegateCommand(ButtonEditAdvert);

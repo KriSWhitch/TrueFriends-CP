@@ -15,9 +15,11 @@ namespace TrueFriendsApp
         private string kindOfAnimal;
         private string description;
         private int animalAge;
-        private float animalWeight;
+        private decimal animalWeight;
         private Picture image;
         private ImageSource imageSource = null;
+        private string advertCreator;
+        private string creationDate;
 
         public int ID // Идентификатор объявления
         { 
@@ -39,7 +41,7 @@ namespace TrueFriendsApp
             get { return animalAge; }
             set { animalAge = value; }
         }
-        public float AnimalWeight // Количество товара на складе
+        public decimal AnimalWeight // Количество товара на складе
         {
             get { return animalWeight; }
             set { animalWeight = value; }
@@ -54,34 +56,26 @@ namespace TrueFriendsApp
             get { return description; }
             set { description = value; }
         } 
-        public Picture Image 
+        public Picture Image // Картинка к объявлению
         {
             get { return image; }
             set { image = value; }
-        } // Картинка к объявлению
+        } 
         public ImageSource ImageSource
         {
             get { return imageSource; }
             set { imageSource = value; }
         }
-
-        public int GetID()
+        public string AdvertCreator // Создатель объявления
         {
-            bool uniquenessFlag = true;
-            List<Advert> adList = Serialization.Deserialize();
-            int unicID = 0;
-            Random rnd = new Random();
-            while (uniquenessFlag)
-            {
-                unicID = rnd.Next(0, 9999);
-                var linqQuery = from ad in adList where ad.ID == unicID select ad;
-                if (linqQuery.Count() == 0)
-                {
-                    uniquenessFlag = false;
-                }
-            }
-
-            return unicID;
+            get { return advertCreator; }
+            set { advertCreator = value; }
         }
+        public string CreationDate // Создатель объявления
+        {
+            get { return creationDate; }
+            set { creationDate = value; }
+        }
+
     }
 }

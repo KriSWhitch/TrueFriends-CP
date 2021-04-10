@@ -23,7 +23,7 @@ namespace TrueFriendsApp.ViewModel
         private string kindOfAnimal;
         private string description;
         private int animalAge;
-        private float animalWeight;
+        private decimal animalWeight;
         private Picture image;
         private ImageSource imageSource;
 
@@ -72,7 +72,7 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("Description");
             }
         }
-        public float AnimalWeight // Цена товара
+        public decimal AnimalWeight // Цена товара
         {
             get { return animalWeight; }
             set
@@ -190,23 +190,8 @@ namespace TrueFriendsApp.ViewModel
             CheckValidation(FullName + "", ShortName + "", KindOfAnimal + "", Description + "", AnimalAge + "", AnimalWeight + "");
             if (completenessFlag)
             {
-                Advert ad = new Advert();
-                ad.ID = ID;
-                ad.FullName = FullName;
-                ad.ShortName = ShortName;
-                ad.KindOfAnimal = KindOfAnimal;
-                ad.Description = Description;
-                ad.AnimalAge = AnimalAge;
-                ad.AnimalWeight = AnimalWeight;
-                if (ImageSource != null) ad.Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
-                List<Advert> adList = Serialization.Deserialize();
-                var item = adList.SingleOrDefault(x => x.ID == ad.ID);
-                if (item != null)
-                {
-                    adList.Remove(item);
-                    Serialization.Serialize(adList);
-                }
-                Serialization.Serialize(ad);
+                Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
+                DB.EditAdvert(ID, FullName, ShortName, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureByteArray);
                 MessageBox.Show(
                     "Объявление было успешно изменено!",
                     "Успех!",
