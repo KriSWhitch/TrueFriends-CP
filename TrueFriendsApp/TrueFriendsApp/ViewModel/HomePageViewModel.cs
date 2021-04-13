@@ -1,8 +1,11 @@
 ﻿using DevExpress.Mvvm;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
+using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
@@ -14,27 +17,19 @@ namespace TrueFriendsApp.ViewModel
         {
             this.mainForm = mainForm;
         }
-
-        private List<Advert> adList = DB.GetAdverts();
+        
+        private BindingList<Advert> adList = DB.GetAdverts();
         private Advert selectedItem;
 
-        public List<Advert> AdList
+        public BindingList<Advert> AdList
         {
             get
             {
-                foreach (var el in adList)
-                {
-                    el.ImageSource = ImageConverter.ImageSourceFromBitmap(el.Image.Source);
-                }
                 return adList;
             }
             set
             {
                 adList = value;
-                foreach (var el in adList)
-                {
-                    el.ImageSource = ImageConverter.ImageSourceFromBitmap(el.Image.Source);
-                }
                 RaisePropertyChanged("AdList");
             }
         }

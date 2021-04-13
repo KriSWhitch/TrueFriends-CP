@@ -24,19 +24,19 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5" Orientation="Vertical">
-                        <Image HorizontalAlignment="Center" Source="{Binding Path=ImageSource}" Width="350" Height="210"/>
+                        <Image HorizontalAlignment="Center" Source="{Binding Path=Advert_ImageSource}" Width="350" Height="210"/>
                         <StackPanel Orientation="Vertical" Width="330">
                             <StackPanel>
-                                <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=ShortName}" Margin="5 5 0 10"/>
+                                <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=Advert_ShortName}" Margin="5 5 0 10"/>
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                                     <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Возраст:" FontSize="14"></Label>
-                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=AnimalAge}" />
+                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalAge}" />
                                 </StackPanel>
                                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                                     <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Вес:" FontSize="14"></Label>
-                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=AnimalWeight}" />
+                                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalWeight}" />
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>

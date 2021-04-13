@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Media;
@@ -9,73 +11,108 @@ namespace TrueFriendsApp
 {
     public class Advert
     {
-        private int id;
-        private string fullName;
-        private string shortName;
-        private string kindOfAnimal;
-        private string description;
-        private int animalAge;
-        private decimal animalWeight;
-        private Picture image;
-        private ImageSource imageSource = null;
-        private string advertCreator;
-        private string creationDate;
+        private int advert_id;
+        private string advert_fullName;
+        private string advert_shortName;
+        private string advert_kindOfAnimal;
+        private string advert_description;
+        private int advert_animalAge;
+        private decimal advert_animalWeight;
+        private byte[] advert_imageBitArray;
+        private Picture advert_image;
+        private ImageSource advert_imageSource = null;
+        private string advert_advertCreator;
+        private DateTime advert_creationDate;
 
-        public int ID // Идентификатор объявления
+        [Key]
+        public int Advert_ID // Идентификатор объявления
         { 
-            get { return id; } 
-            set { id = value; } 
+            get { return advert_id; } 
+            set { advert_id = value; } 
         } 
-        public string FullName // Полное название объявления
+        public string Advert_FullName // Полное название объявления
         {
-            get { return fullName; }
-            set { fullName = value; }
+            get { return advert_fullName; }
+            set { advert_fullName = value; }
         } 
-        public string ShortName // Краткое название объявления
+        public string Advert_ShortName // Краткое название объявления
         {
-            get { return shortName; }
-            set { shortName = value; }
+            get { return advert_shortName; }
+            set { advert_shortName = value; }
         }
-        public int AnimalAge // Возраст животного
+        public int Advert_AnimalAge // Возраст животного
         {
-            get { return animalAge; }
-            set { animalAge = value; }
+            get { return advert_animalAge; }
+            set { advert_animalAge = value; }
         }
-        public decimal AnimalWeight // Количество товара на складе
+        public decimal Advert_AnimalWeight // Количество товара на складе
         {
-            get { return animalWeight; }
-            set { animalWeight = value; }
+            get { return advert_animalWeight; }
+            set { advert_animalWeight = value; }
         }
-        public string KindOfAnimal // Вид животного
+        public string Advert_KindOfAnimal // Вид животного
         {
-            get { return kindOfAnimal; }
-            set { kindOfAnimal = value; }
+            get { return advert_kindOfAnimal; }
+            set { advert_kindOfAnimal = value; }
         } 
-        public string Description // Описание объявления
+        public string Advert_Description // Описание объявления
         {
-            get { return description; }
-            set { description = value; }
-        } 
-        public Picture Image // Картинка к объявлению
-        {
-            get { return image; }
-            set { image = value; }
-        } 
-        public ImageSource ImageSource
-        {
-            get { return imageSource; }
-            set { imageSource = value; }
+            get { return advert_description; }
+            set { advert_description = value; }
         }
-        public string AdvertCreator // Создатель объявления
+        public byte[] Advert_Image
         {
-            get { return advertCreator; }
-            set { advertCreator = value; }
+            get { return advert_imageBitArray; }
+            set { advert_imageBitArray = value; }
         }
-        public string CreationDate // Создатель объявления
+        [NotMapped]
+        public Picture Advert_Picture // Картинка к объявлению
         {
-            get { return creationDate; }
-            set { creationDate = value; }
+            get { return advert_image; }
+            set { advert_image = value; }
         }
+        [NotMapped]
+        public ImageSource Advert_ImageSource
+        {
+            get { return advert_imageSource; }
+            set { advert_imageSource = value; }
+        }
+        public string Advert_Creator // Создатель объявления
+        {
+            get { return advert_advertCreator; }
+            set { advert_advertCreator = value; }
+        }
+        public DateTime Advert_CreationDate // Создатель объявления
+        {
+            get { return advert_creationDate; }
+            set { advert_creationDate = value; }
+        }
+        public Advert()
+        {
 
+        }
+        public Advert(int id, string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        {
+            Advert_ID = id;
+            Advert_FullName = fullName;
+            Advert_ShortName = shortName;
+            Advert_AnimalAge = animalAge;
+            Advert_AnimalWeight = animalWeight;
+            Advert_KindOfAnimal = kindOfAnimal;
+            Advert_Description = description;
+            Advert_Image = pictureByteArray;
+            Advert_CreationDate = creationDate;
+        }
+        public Advert(string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        {
+            Advert_FullName = fullName;
+            Advert_ShortName = shortName;
+            Advert_AnimalAge = animalAge;
+            Advert_AnimalWeight = animalWeight;
+            Advert_KindOfAnimal = kindOfAnimal;
+            Advert_Description = description;
+            Advert_Image = pictureByteArray;
+            Advert_CreationDate = creationDate;
+        }
     }
 }

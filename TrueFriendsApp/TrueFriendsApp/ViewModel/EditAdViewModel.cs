@@ -116,15 +116,15 @@ namespace TrueFriendsApp.ViewModel
         {
             this.mainWindow = mainWindow;
 
-            ID = ad.ID;
-            FullName = ad.FullName;
-            ShortName = ad.ShortName;
-            KindOfAnimal = ad.KindOfAnimal;
-            Description = ad.Description;
-            AnimalAge = ad.AnimalAge;
-            AnimalWeight = ad.AnimalWeight;
+            ID = ad.Advert_ID;
+            FullName = ad.Advert_FullName;
+            ShortName = ad.Advert_ShortName;
+            KindOfAnimal = ad.Advert_KindOfAnimal;
+            Description = ad.Advert_Description;
+            AnimalAge = ad.Advert_AnimalAge;
+            AnimalWeight = ad.Advert_AnimalWeight;
 
-            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
+            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
             //AdMainImageButtonClose.Visibility = Visibility.Visible;
             //AdMainImageWrapper.Background = new SolidColorBrush(Colors.Transparent);
         }

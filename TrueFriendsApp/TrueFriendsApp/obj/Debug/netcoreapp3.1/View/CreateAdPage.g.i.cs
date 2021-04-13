@@ -243,7 +243,7 @@ namespace TrueFriendsApp.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TrueFriendsApp;V1.0.0.0;component/view/createadpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/TrueFriendsApp;component/view/createadpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\CreateAdPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

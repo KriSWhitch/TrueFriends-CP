@@ -121,29 +121,29 @@ namespace TrueFriendsApp.ViewModel
         {
             this.mainForm = mainForm;
             Ad = ad;
-            ID = ad.ID;
-            FullName = ad.FullName;
-            ShortName = ad.ShortName;
-            KindOfAnimal = ad.KindOfAnimal;
-            Description = ad.Description;
-            AnimalWeight = ad.AnimalWeight;
-            AnimalAge = ad.AnimalAge;
-            Image = ad.Image;
-            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
+            ID = ad.Advert_ID;
+            FullName = ad.Advert_FullName;
+            ShortName = ad.Advert_ShortName;
+            KindOfAnimal = ad.Advert_KindOfAnimal;
+            Description = ad.Advert_Description;
+            AnimalWeight = ad.Advert_AnimalWeight;
+            AnimalAge = ad.Advert_AnimalAge;
+            Image = ad.Advert_Picture;
+            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
         }
 
         public AdvertPageViewModel(Advert ad)
         {
             Ad = ad;
-            ID = ad.ID;
-            FullName = ad.FullName;
-            ShortName = ad.ShortName;
-            KindOfAnimal = ad.KindOfAnimal;
-            Description = ad.Description;
-            AnimalWeight = ad.AnimalWeight;
-            AnimalAge = ad.AnimalAge;
-            Image = ad.Image;
-            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Image.Source);
+            ID = ad.Advert_ID;
+            FullName = ad.Advert_FullName;
+            ShortName = ad.Advert_ShortName;
+            KindOfAnimal = ad.Advert_KindOfAnimal;
+            Description = ad.Advert_Description;
+            AnimalWeight = ad.Advert_AnimalWeight;
+            AnimalAge = ad.Advert_AnimalAge;
+            Image = ad.Advert_Picture;
+            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
         }
 
         public ICommand buttonBackToHomePage => new DelegateCommand(ButtonBackToHomePage);
@@ -158,7 +158,7 @@ namespace TrueFriendsApp.ViewModel
             MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить объявление?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                DB.DeleteAdvert(ID);
+                DB.DeleteAdvert(Ad);
                 mainForm.LoadView(ViewType.Main);
             }
         }
