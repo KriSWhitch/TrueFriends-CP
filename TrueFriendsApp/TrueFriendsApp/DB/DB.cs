@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Threading.Tasks;
 using System.Windows;
 using TrueFriendsApp.Model;
 
@@ -67,12 +68,12 @@ namespace TrueFriendsApp
                 AdvertContext db = new AdvertContext(options);
                 db.Advert.Load();
                 adverts = db.Advert.Local.ToBindingList();
-                foreach (var el in adverts)
-                {
+                Parallel.ForEach(adverts, el => {
                     el.Advert_Picture = new Picture();
                     el.Advert_Picture.PictureByteArray = el.Advert_Image;
                     el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
-                }
+                    el.Advert_ImageSource.Freeze();
+                });
                 return adverts;
             }
 
