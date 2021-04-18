@@ -43,9 +43,7 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
             </StackPanel>
-            <StackPanel Margin="0 0 60 0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                <ComboBox x:Name="ComboBoxLanguages" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Padding="5 0" Height="30" Width="200" Foreground="Black" BorderBrush="#5AA9B0" Background="White"/>
-            </StackPanel>
+            <StackPanel Margin="0 0 60 0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right"/>
         </Grid>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF3E7585" Panel.ZIndex="100">
             <StackPanel x:Name="MenuControlPanel">

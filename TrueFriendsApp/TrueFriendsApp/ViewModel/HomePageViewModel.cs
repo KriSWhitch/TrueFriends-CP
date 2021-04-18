@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using TrueFriendsApp.Model;
@@ -18,13 +19,16 @@ namespace TrueFriendsApp.ViewModel
         public HomePageViewModel(MainWindow mainForm)
         {
             this.mainForm = mainForm;
+            TmpList = AdList;
             CurrentSelection = Sorts.First();
             SortChangedClick();
         }
 
         private BindingList<Advert> adList = DB.GetAdverts();
+        private BindingList<Advert> tmpList;
         private Advert selectedItem;
         private Sort currentSelection;
+        private string searchText;
 
         public BindingList<Advert> AdList
         {
@@ -36,6 +40,19 @@ namespace TrueFriendsApp.ViewModel
             {
                 adList = value;
                 RaisePropertyChanged("AdList");
+            }
+        }
+
+        public BindingList<Advert> TmpList
+        {
+            get
+            {
+                return tmpList;
+            }
+            set
+            {
+                tmpList = value;
+                RaisePropertyChanged("TmpList");
             }
         }
         public Advert SelectedItem
@@ -72,7 +89,18 @@ namespace TrueFriendsApp.ViewModel
             }
         }
         
-
+        public string SearchText
+        {
+            get
+            {
+                return searchText;
+            }
+            set
+            {
+                searchText = value;
+                RaisePropertyChanged("SearchText");
+            }
+        }
 
         public ICommand rowDoubleClick => new DelegateCommand(RowDoubleClick);
         private void RowDoubleClick()
@@ -86,26 +114,50 @@ namespace TrueFriendsApp.ViewModel
             switch (CurrentSelection.SortType)
             {
                 case "По названию":
-                    var sortedShortNameList = new BindingList<Advert>(AdList.OrderBy(x => x.Advert_ShortName).ToList());
-                    AdList = sortedShortNameList;
+                    var sortedShortNameList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_ShortName).ToList());
+                    TmpList = sortedShortNameList;
                     break;
                 case "По возр. возраста":
-                    var sortedAgeAscList = new BindingList<Advert>(AdList.OrderBy(x => x.Advert_AnimalAge).ToList());
-                    AdList = sortedAgeAscList;
+                    var sortedAgeAscList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_AnimalAge).ToList());
+                    TmpList = sortedAgeAscList;
                     break;
                 case "По убыв. возраста":
-                    var sortedAgeDescList = new BindingList<Advert>(AdList.OrderByDescending(x => x.Advert_AnimalAge).ToList());
-                    AdList = sortedAgeDescList;
+                    var sortedAgeDescList = new BindingList<Advert>(TmpList.OrderByDescending(x => x.Advert_AnimalAge).ToList());
+                    TmpList = sortedAgeDescList;
                     break;
                 case "По возр. веса":
-                    var sortedWeightList = new BindingList<Advert>(AdList.OrderBy(x => x.Advert_AnimalWeight).ToList());
-                    AdList = sortedWeightList;
+                    var sortedWeightList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_AnimalWeight).ToList());
+                    TmpList = sortedWeightList;
                     break;
                 case "По убыв. веса":
-                    var sortedWeightDescList = new BindingList<Advert>(AdList.OrderByDescending(x => x.Advert_AnimalWeight).ToList());
-                    AdList = sortedWeightDescList;
+                    var sortedWeightDescList = new BindingList<Advert>(TmpList.OrderByDescending(x => x.Advert_AnimalWeight).ToList());
+                    TmpList = sortedWeightDescList;
                     break;
             }
         }
+
+        public ICommand buttonSearchAdvert => new DelegateCommand(ButtonSearchAdvert);
+        private void ButtonSearchAdvert()
+        {
+            BindingList<Advert> tmpAdverts = new BindingList<Advert>();
+            Regex regex = new Regex(@$"{SearchText}(\w*)", RegexOptions.IgnoreCase);
+            foreach (var el in AdList)
+            {
+                MatchCollection matches = regex.Matches(el.Advert_ShortName);
+                if (matches.Count > 0) tmpAdverts.Add(el);
+            }
+            TmpList = tmpAdverts;
+            SortChangedClick();
+        }
+
+        public ICommand buttonClearSearch => new DelegateCommand(ButtonClearSearch);
+        private void ButtonClearSearch()
+        {
+            TmpList = AdList;
+            SortChangedClick();
+            SearchText = "";
+        }
+        
+
     }
 }

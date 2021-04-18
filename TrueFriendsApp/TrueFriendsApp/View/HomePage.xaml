@@ -13,11 +13,12 @@
         <StackPanel>
             <DockPanel Height="40" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 0">
+                    <Label FontSize="16" VerticalAlignment="Center" Content="Сортировка:" Margin="0 0 20 0"></Label>
                     <ComboBox
                         x:Name="ComboBoxSort" ItemsSource="{Binding Sorts}"
                         SelectedItem="{Binding CurrentSelection}" DisplayMemberPath="SortType" 
                         SelectedValuePath="SortType" SelectedValue="{Binding CurrentSelection.SortType}"
-                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Padding="5 0" 
+                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="5 0" 
                         Height="30" Width="200" Foreground="Black" BorderBrush="#5AA9B0" Background="White" 
                     >
                         <i:Interaction.Triggers>
@@ -28,8 +29,22 @@
                         </i:Interaction.Triggers>
                     </ComboBox>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+                    <Label FontSize="16" VerticalAlignment="Center" Content="Поиск по названию:" Margin="0 0 20 0"></Label>
+                    <TextBox
+                        x:Name="TextBlockSearch" FontSize="16" Padding="5 0" Margin="0 0 20 0" 
+                        Height="30" Width="200" Foreground="Black" Background="White"
+                        Text="{Binding SearchText}"
+                    />
+                    <Button x:Name="ButtonSearchAdvert" Command="{Binding buttonSearchAdvert}" Width="60" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Search" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
+                    </Button>
+                    <Button x:Name="ButtonClearSearch" Command="{Binding buttonClearSearch}" Width="60" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Remove" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
             </DockPanel>
-            <ListBox Grid.Column="2" x:Name="MainGrid" ItemsSource="{Binding AdList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Foreground="Black" Height="580">
+            <ListBox Grid.Column="2" x:Name="MainGrid" ItemsSource="{Binding TmpList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Foreground="Black" Height="580">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <cmd:EventToCommand Command="{Binding rowDoubleClick}"  
