@@ -33,7 +33,7 @@ namespace TrueFriendsApp
         }
         public static bool AnimalWeightValidation(string value)
         {
-            Regex regex = new Regex(pattern: @"^(\d{1,3}.\d{1})$|^(\d{1,3})$");
+            Regex regex = new Regex(pattern: @"^(\d{1,3}.\d{1,2})$|^(\d{1,3})$");
             return regex.IsMatch((string)value);
         }
     }
