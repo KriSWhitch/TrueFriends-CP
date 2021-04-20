@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="TrueFriends" MinHeight="720" Height="720" MinWidth="1280" Width="1280" Icon="../images/icon.ico" Foreground="White"
+        Title="TrueFriends" MinHeight="720" Height="720" MinWidth="1280" Width="1280" Icon="../../images/icon.ico" Foreground="White"
         Loaded="MainWindow_Loaded" ResizeMode="CanMinimize">
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
@@ -20,9 +20,8 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <FrameworkElement x:Key="MouseCursor" Cursor="../images/arrow_bold.cur"/>
+        <FrameworkElement x:Key="MouseCursor" Cursor="../../images/arrow_bold.cur"/>
     </Window.Resources>
-
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>

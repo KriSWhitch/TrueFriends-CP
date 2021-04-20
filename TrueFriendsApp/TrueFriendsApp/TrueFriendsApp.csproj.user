@@ -7,33 +7,51 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\AdvertPage.xaml.cs">
+    <Compile Update="View\Pages\AdvertPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\CreateAdPage.xaml.cs">
+    <Compile Update="View\Pages\CreateAdPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\EditAdPage.xaml.cs">
+    <Compile Update="View\Pages\EditAdPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\HomePage.xaml.cs">
+    <Compile Update="View\Pages\HomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\UserAuthorizationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Pages\UserRegistrationPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Windows\AuthorizationWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\HomePage.xaml">
+    <Page Update="View\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MainWindow.xaml">
+    <Page Update="View\Pages\UserAuthorizationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\AdvertPage.xaml">
+    <Page Update="View\Pages\UserRegistrationPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\CreateAdPage.xaml">
+    <Page Update="View\Windows\AuthorizationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\EditAdPage.xaml">
+    <Page Update="View\Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\AdvertPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\CreateAdPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Pages\EditAdPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="resources\lang.ru-RU.xaml">
