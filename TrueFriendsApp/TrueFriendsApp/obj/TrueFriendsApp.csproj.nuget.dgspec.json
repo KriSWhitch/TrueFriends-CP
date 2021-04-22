@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj": {}
+    "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj": {}
   },
   "projects": {
-    "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj": {
+    "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
+        "projectUniqueName": "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
         "projectName": "TrueFriendsApp",
-        "projectPath": "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
+        "projectPath": "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
         "packagesPath": "C:\\Users\\KriSWhitch\\.nuget\\packages\\",
-        "outputPath": "F:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\obj\\",
+        "outputPath": "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\KriSWhitch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

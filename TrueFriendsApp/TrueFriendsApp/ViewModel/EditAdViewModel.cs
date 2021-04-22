@@ -146,7 +146,15 @@ namespace TrueFriendsApp.ViewModel
         public ICommand addPhotoButton => new DelegateCommand(AddPhotoButton);
         private void AddPhotoButton()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Images|*.jpg;*.jpeg;*.png",
+                ValidateNames = true,
+                CheckFileExists = false,
+                CheckPathExists = true,
+                Multiselect = false,
+                Title = "Выберите файл"
+            };
             if (openFileDialog.ShowDialog() == true && IsValidImage(openFileDialog.FileName))
             {
                 if (ImageSource == null)
