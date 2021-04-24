@@ -46,9 +46,8 @@
                     Padding="5" Cursor="IBeam"/>
             </StackPanel>
             <Button 
-                FontSize="15"
-                Height="40"
-                Margin="0, 15, 0, 0"
+                FontSize="15" Height="40"
+                Margin="0, 15, 0, 0" Command="{Binding signUp}"
                 Foreground="White"
                 Background="#5AA9B0" BorderBrush="#5AA9B0" Cursor="Hand">
                 <TextBlock TextAlignment="Center">Зарегистрироваться</TextBlock>

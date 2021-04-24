@@ -16,8 +16,7 @@ namespace TrueFriendsApp.ViewModel
 
         private Advert ad;
         private int id;
-        private string fullName;
-        private string shortName;
+        private string name;
         private string kindOfAnimal;
         private string description;
         private int animalAge;
@@ -42,22 +41,13 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ID");
             }
         }
-        public string FullName // Полное название товара
+        public string Name // Полное название товара
         {
-            get { return fullName; }
+            get { return name; }
             set
             {
-                fullName = value;
-                RaisePropertyChanged("FullName");
-            }
-        }
-        public string ShortName // Краткое название товара
-        {
-            get { return shortName; }
-            set
-            {
-                shortName = value;
-                RaisePropertyChanged("ShortName");
+                name = value;
+                RaisePropertyChanged("Name");
             }
         }
         public string KindOfAnimal // Категория товара
@@ -122,8 +112,7 @@ namespace TrueFriendsApp.ViewModel
             this.mainForm = mainForm;
             Ad = ad;
             ID = ad.Advert_ID;
-            FullName = ad.Advert_FullName;
-            ShortName = ad.Advert_ShortName;
+            Name = ad.Advert_Name;
             KindOfAnimal = ad.Advert_KindOfAnimal;
             Description = ad.Advert_Description;
             AnimalWeight = ad.Advert_AnimalWeight;
@@ -136,8 +125,7 @@ namespace TrueFriendsApp.ViewModel
         {
             Ad = ad;
             ID = ad.Advert_ID;
-            FullName = ad.Advert_FullName;
-            ShortName = ad.Advert_ShortName;
+            Name = ad.Advert_Name;
             KindOfAnimal = ad.Advert_KindOfAnimal;
             Description = ad.Advert_Description;
             AnimalWeight = ad.Advert_AnimalWeight;

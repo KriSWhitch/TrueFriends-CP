@@ -114,8 +114,8 @@ namespace TrueFriendsApp.ViewModel
             switch (CurrentSelection.SortType)
             {
                 case "По названию":
-                    var sortedShortNameList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_ShortName).ToList());
-                    TmpList = sortedShortNameList;
+                    var sortedNameList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_Name).ToList());
+                    TmpList = sortedNameList;
                     break;
                 case "По возр. возраста":
                     var sortedAgeAscList = new BindingList<Advert>(TmpList.OrderBy(x => x.Advert_AnimalAge).ToList());
@@ -143,7 +143,7 @@ namespace TrueFriendsApp.ViewModel
             Regex regex = new Regex(@$"{SearchText}(\w*)", RegexOptions.IgnoreCase);
             foreach (var el in AdList)
             {
-                MatchCollection matches = regex.Matches(el.Advert_ShortName);
+                MatchCollection matches = regex.Matches(el.Advert_Name);
                 if (matches.Count > 0) tmpAdverts.Add(el);
             }
             TmpList = tmpAdverts;

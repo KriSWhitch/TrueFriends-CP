@@ -42,6 +42,7 @@
             </StackPanel>
             <Button
                 Height="40" Cursor="Hand"
+                Command="{Binding signIn}"
                 Background="#5AA9B0" BorderBrush="#5AA9B0">
                 <Grid>
                     <TextBlock 

@@ -62,7 +62,7 @@
                             <Image HorizontalAlignment="Center" Source="{Binding Path=Advert_ImageSource}" Width="350" Height="210"/>
                             <StackPanel Orientation="Vertical" Width="330">
                                 <StackPanel>
-                                    <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=Advert_ShortName}" Margin="5 5 0 10"/>
+                                    <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=Advert_Name}" Margin="5 5 0 10"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">

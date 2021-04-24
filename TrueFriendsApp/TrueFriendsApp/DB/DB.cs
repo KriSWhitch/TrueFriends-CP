@@ -14,14 +14,49 @@ namespace TrueFriendsApp
         private static string StringConnection = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private static DbContextOptionsBuilder<AdvertContext>  optionsBuilder = new DbContextOptionsBuilder<AdvertContext>();
         private static DbContextOptions<AdvertContext> options = optionsBuilder.UseSqlServer(StringConnection).Options;
-        
-        public static void CreateAdvert(string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
+        private static DbContextOptionsBuilder<UserContext> optionsBuilderUser = new DbContextOptionsBuilder<UserContext>();
+        private static DbContextOptions<UserContext> optionsUser = optionsBuilderUser.UseSqlServer(StringConnection).Options;
+
+
+        public static BindingList<User> GetUsers()
+        {
+            BindingList<User> users = new BindingList<User>();
+            try
+            {
+                UserContext db = new UserContext(optionsUser);
+                db.User.Load();
+                users = db.User.Local.ToBindingList();
+                return users;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return users;
+            }
+        }
+
+        public static void AddUser(string login, string password)
+        {
+            try
+            {
+                UserContext db = new UserContext(optionsUser);
+                User user = new User(login, password, false);
+                db.User.Add(user);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.Message);
+            }
+        }
+
+        public static void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
         {
             
             try
             {
                 AdvertContext db = new AdvertContext(options);
-                Advert ad = new Advert(fullName,shortName, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
+                Advert ad = new Advert(name, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
                 db.Advert.Add(ad);
                 db.SaveChanges();
             }
@@ -31,12 +66,12 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void EditAdvert(int id, string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
+        public static void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
         {
             try
             {
                 AdvertContext db = new AdvertContext(options);
-                Advert ad = new Advert(id, fullName, shortName, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
+                Advert ad = new Advert(id, name, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
                 db.Advert.Update(ad);
                 db.SaveChanges();
             }

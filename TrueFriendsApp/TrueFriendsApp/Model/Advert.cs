@@ -12,8 +12,7 @@ namespace TrueFriendsApp
     public class Advert
     {
         private int advert_id;
-        private string advert_fullName;
-        private string advert_shortName;
+        private string advert_name;
         private string advert_kindOfAnimal;
         private string advert_description;
         private int advert_animalAge;
@@ -29,23 +28,18 @@ namespace TrueFriendsApp
         { 
             get { return advert_id; } 
             set { advert_id = value; } 
-        } 
-        public string Advert_FullName // Полное название объявления
+        }
+        public string Advert_Name // Название объявления
         {
-            get { return advert_fullName; }
-            set { advert_fullName = value; }
-        } 
-        public string Advert_ShortName // Краткое название объявления
-        {
-            get { return advert_shortName; }
-            set { advert_shortName = value; }
+            get { return advert_name; }
+            set { advert_name = value; }
         }
         public int Advert_AnimalAge // Возраст животного
         {
             get { return advert_animalAge; }
             set { advert_animalAge = value; }
         }
-        public decimal Advert_AnimalWeight // Количество товара на складе
+        public decimal Advert_AnimalWeight // Вес животного
         {
             get { return advert_animalWeight; }
             set { advert_animalWeight = value; }
@@ -91,11 +85,10 @@ namespace TrueFriendsApp
         {
 
         }
-        public Advert(int id, string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        public Advert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
         {
             Advert_ID = id;
-            Advert_FullName = fullName;
-            Advert_ShortName = shortName;
+            Advert_Name = name;
             Advert_AnimalAge = animalAge;
             Advert_AnimalWeight = animalWeight;
             Advert_KindOfAnimal = kindOfAnimal;
@@ -103,10 +96,9 @@ namespace TrueFriendsApp
             Advert_Image = pictureByteArray;
             Advert_CreationDate = creationDate;
         }
-        public Advert(string fullName, string shortName, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        public Advert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
         {
-            Advert_FullName = fullName;
-            Advert_ShortName = shortName;
+            Advert_Name = name;
             Advert_AnimalAge = animalAge;
             Advert_AnimalWeight = animalWeight;
             Advert_KindOfAnimal = kindOfAnimal;

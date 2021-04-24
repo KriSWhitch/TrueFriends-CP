@@ -22,8 +22,7 @@ namespace TrueFriendsApp.ViewModel
         private MainWindow mainWindow;
 
         private int id;
-        private string fullName;
-        private string shortName;
+        private string name;
         private string kindOfAnimal;
         private string description;
         private int animalAge;
@@ -40,22 +39,13 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ID");
             }
         }
-        public string FullName // Полное название товара
+        public string Name // Краткое название товара
         {
-            get { return fullName; }
+            get { return name; }
             set
             {
-                fullName = value;
-                RaisePropertyChanged("FullName");
-            }
-        }
-        public string ShortName // Краткое название товара
-        {
-            get { return shortName; }
-            set
-            {
-                shortName = value;
-                RaisePropertyChanged("ShortName");
+                name = value;
+                RaisePropertyChanged("Name");
             }
         }
         public string KindOfAnimal // Категория товара
@@ -178,19 +168,18 @@ namespace TrueFriendsApp.ViewModel
             completenessFlag = false;
             if
             (
-                ValidationRules.FullNameValidation(FullName + "") &&
-                ValidationRules.ShortNameValidation(ShortName + "") &&
+                ValidationRules.NameValidation(Name + "") &&
                 ValidationRules.KindOfAnimalValidation(KindOfAnimal + "") &&
                 ValidationRules.DescriptionValidation(Description + "") &&
                 ValidationRules.AnimalAgeValidation(AnimalAge + "") &&
                 ValidationRules.AnimalWeightValidation(AnimalWeight + "") &&
                 (ImageSource != null)
             ) completenessFlag = true;
-            CheckValidation(FullName + "", ShortName + "", KindOfAnimal + "", Description + "", AnimalAge + "", AnimalWeight + "");
+            CheckValidation(Name + "", KindOfAnimal + "", Description + "", AnimalAge + "", AnimalWeight + "");
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmap(ImageSource as BitmapImage));
-                DB.CreateAdvert(FullName, ShortName, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureByteArray);
+                DB.CreateAdvert(Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureByteArray);
                 MessageBox.Show(
                     "Объявление было успешно добавлено!",
                     "Успех!",
@@ -208,42 +197,28 @@ namespace TrueFriendsApp.ViewModel
                 );
             }
         }
-        private FontAwesomeIcon fullNameValidationIcon;
-        private FontAwesomeIcon shortNameValidationIcon;
+        private FontAwesomeIcon nameValidationIcon;
         private FontAwesomeIcon kindOfAnimalValidationIcon;
         private FontAwesomeIcon descriptionValidationIcon;
         private FontAwesomeIcon animalAgeValidationIcon;
         private FontAwesomeIcon animalWeightValidationIcon;
 
-        private Visibility fullNameValidationIconVisibility;
-        private Visibility shortNameValidationIconVisibility;
+        private Visibility nameValidationIconVisibility;
         private Visibility kindOfAnimalValidationIconVisibility;
         private Visibility descriptionValidationIconVisibility;
         private Visibility animalAgeValidationIconVisibility;
         private Visibility animalWeightValidationIconVisibility;
 
-        public FontAwesomeIcon FullNameValidationIcon
+        public FontAwesomeIcon NameValidationIcon
         {
             get
             {
-                return fullNameValidationIcon;
+                return nameValidationIcon;
             }
             set
             {
-                fullNameValidationIcon = value;
-                RaisePropertyChanged("FullNameValidationIcon");
-            }
-        }
-        public FontAwesomeIcon ShortNameValidationIcon
-        {
-            get
-            {
-                return shortNameValidationIcon;
-            }
-            set
-            {
-                shortNameValidationIcon = value;
-                RaisePropertyChanged("ShortNameValidationIcon");
+                nameValidationIcon = value;
+                RaisePropertyChanged("NameValidationIcon");
             }
         }
         public FontAwesomeIcon KindOfAnimalValidationIcon
@@ -295,28 +270,16 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
-        public Visibility FullNameValidationIconVisibility
+        public Visibility NameValidationIconVisibility
         {
             get
             {
-                return fullNameValidationIconVisibility;
+                return nameValidationIconVisibility;
             }
             set
             {
-                fullNameValidationIconVisibility = value;
-                RaisePropertyChanged("FullNameValidationIconVisibility");
-            }
-        }
-        public Visibility ShortNameValidationIconVisibility
-        {
-            get
-            {
-                return shortNameValidationIconVisibility;
-            }
-            set
-            {
-                shortNameValidationIconVisibility = value;
-                RaisePropertyChanged("ShortNameValidationIconVisibility");
+                nameValidationIconVisibility = value;
+                RaisePropertyChanged("NameValidationIconVisibility");
             }
         }
         public Visibility KindOfAnimalValidationIconVisibility
@@ -368,27 +331,17 @@ namespace TrueFriendsApp.ViewModel
             } 
         }
 
-        private void CheckValidation(string fullName, string shortName, string kindOfAnimal, string description, string animalAge, string animalWeight)
+        private void CheckValidation(string name, string kindOfAnimal, string description, string animalAge, string animalWeight)
         {
-            if (ValidationRules.FullNameValidation(fullName))
+            if (ValidationRules.NameValidation(name))
             {
-                FullNameValidationIcon = FontAwesomeIcon.CheckCircle;
-                FullNameValidationIconVisibility = Visibility.Visible;
+                NameValidationIcon = FontAwesomeIcon.CheckCircle;
+                NameValidationIconVisibility = Visibility.Visible;
             }
             else
             {
-                FullNameValidationIcon = FontAwesomeIcon.MinusCircle;
-                FullNameValidationIconVisibility = Visibility.Visible;
-            }
-            if (ValidationRules.ShortNameValidation(shortName))
-            {
-                ShortNameValidationIcon = FontAwesomeIcon.CheckCircle;
-                ShortNameValidationIconVisibility = Visibility.Visible;
-            }
-            else
-            {
-                ShortNameValidationIcon = FontAwesomeIcon.MinusCircle;
-                ShortNameValidationIconVisibility = Visibility.Visible;
+                NameValidationIcon = FontAwesomeIcon.MinusCircle;
+                NameValidationIconVisibility = Visibility.Visible;
             }
             if (ValidationRules.KindOfAnimalValidation(kindOfAnimal))
             {

@@ -58,7 +58,7 @@ namespace TrueFriendsApp.ViewModel
                 case ViewType.Authorization:
                     //загружаем вьюшку, ее вьюмодель
                     UserAuthorizationPage viewAuthorization = new UserAuthorizationPage();
-                    UserAuthorizationViewModel vmAuthorization = new UserAuthorizationViewModel();
+                    UserAuthorizationViewModel vmAuthorization = new UserAuthorizationViewModel(mainWindow);
                     //связываем их м/собой
                     vmAuthorization.CodeBehind = this;
                     viewAuthorization.DataContext = vmAuthorization;

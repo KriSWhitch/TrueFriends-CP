@@ -46,16 +46,29 @@ namespace TrueFriendsApp.View
             InitializeComponent();
             //Пользовательская иконка мыши
             Mouse.OverrideCursor = ((FrameworkElement)this.Resources["MouseCursor"]).Cursor;
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
             //загрузка вьюмодел для кнопок меню
             MainWindowViewModel vm = new MainWindowViewModel();
             //даем доступ к этому кодбихайнд
             vm.CodeBehind = this;
             //делаем эту вьюмодел контекстом данных
             this.DataContext = vm;
+        }
+
+        public MainWindow(string login, bool isAdmin)
+        {
+            InitializeComponent();
+            //Пользовательская иконка мыши
+            Mouse.OverrideCursor = ((FrameworkElement)this.Resources["MouseCursor"]).Cursor;
+            //загрузка вьюмодел для кнопок меню
+            MainWindowViewModel vm = new MainWindowViewModel(login, isAdmin);
+            //даем доступ к этому кодбихайнд
+            vm.CodeBehind = this;
+            //делаем эту вьюмодел контекстом данных
+            this.DataContext = vm;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             //загрузка стартовой View
             LoadView(ViewType.Main);
         }

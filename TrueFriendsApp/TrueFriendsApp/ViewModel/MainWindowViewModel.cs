@@ -12,6 +12,17 @@ namespace TrueFriendsApp.ViewModel
 {
     class MainWindowViewModel : ViewModelBase
     {
+        public MainWindowViewModel()
+        {
+
+        }
+        public MainWindowViewModel(string login, bool isAdmin)
+        {
+            Login = login;
+            IsAdmin = isAdmin;
+        }
+        public string Login { get; set; }
+        public bool IsAdmin { get; set; }
         public IMainWindowsCodeBehind CodeBehind { get; set; }
 
         private RelayCommand _LoadCreateAdPageCommand;
