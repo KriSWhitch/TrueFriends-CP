@@ -187,7 +187,7 @@ namespace TrueFriendsApp.ViewModel
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
-                DB.EditAdvert(ID, Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureByteArray);
+                DB.EditAdvert(ID, Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
                 MessageBox.Show(
                     "Объявление было успешно изменено!",
                     "Успех!",

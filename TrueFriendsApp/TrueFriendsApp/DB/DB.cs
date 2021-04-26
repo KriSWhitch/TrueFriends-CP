@@ -50,13 +50,13 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
+        public static void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
         {
-            
+
             try
             {
                 AdvertContext db = new AdvertContext(options);
-                Advert ad = new Advert(name, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
+                Advert ad = new Advert(name, animalAge, animalWeight, kindOfAnimal, description, pictureString, DateTime.Now);
                 db.Advert.Add(ad);
                 db.SaveChanges();
             }
@@ -66,12 +66,12 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray)
+        public static void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
         {
             try
             {
                 AdvertContext db = new AdvertContext(options);
-                Advert ad = new Advert(id, name, animalAge, animalWeight, kindOfAnimal, description, pictureByteArray, DateTime.Now);
+                Advert ad = new Advert(id, name, animalAge, animalWeight, kindOfAnimal, description, pictureString, DateTime.Now);
                 db.Advert.Update(ad);
                 db.SaveChanges();
             }
@@ -103,12 +103,18 @@ namespace TrueFriendsApp
                 AdvertContext db = new AdvertContext(options);
                 db.Advert.Load();
                 adverts = db.Advert.Local.ToBindingList();
+                var tasks = new List<Task>();
                 Parallel.ForEach(adverts, el => {
-                    el.Advert_Picture = new Picture();
-                    el.Advert_Picture.PictureByteArray = el.Advert_Image;
-                    el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
-                    el.Advert_ImageSource.Freeze();
+                    tasks.Add(Task.Run(() =>
+                    {
+                        el.Advert_Picture = new Picture();
+                        el.Advert_Picture.PictureString = el.Advert_Image;
+                        el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
+                        el.Advert_ImageSource.Freeze();
+                    }));
                 });
+                Task t = Task.WhenAll(tasks);
+                t.Wait();
                 return adverts;
             }
 

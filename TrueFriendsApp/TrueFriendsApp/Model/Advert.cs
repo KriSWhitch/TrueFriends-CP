@@ -17,7 +17,7 @@ namespace TrueFriendsApp
         private string advert_description;
         private int advert_animalAge;
         private decimal advert_animalWeight;
-        private byte[] advert_imageBitArray;
+        private string advert_imageString;
         private Picture advert_image;
         private ImageSource advert_imageSource = null;
         private string advert_advertCreator;
@@ -54,10 +54,10 @@ namespace TrueFriendsApp
             get { return advert_description; }
             set { advert_description = value; }
         }
-        public byte[] Advert_Image
+        public string Advert_Image
         {
-            get { return advert_imageBitArray; }
-            set { advert_imageBitArray = value; }
+            get { return advert_imageString; }
+            set { advert_imageString = value; }
         }
         [NotMapped]
         public Picture Advert_Picture // Картинка к объявлению
@@ -85,7 +85,7 @@ namespace TrueFriendsApp
         {
 
         }
-        public Advert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        public Advert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString, DateTime creationDate)
         {
             Advert_ID = id;
             Advert_Name = name;
@@ -93,17 +93,17 @@ namespace TrueFriendsApp
             Advert_AnimalWeight = animalWeight;
             Advert_KindOfAnimal = kindOfAnimal;
             Advert_Description = description;
-            Advert_Image = pictureByteArray;
+            Advert_Image = pictureString;
             Advert_CreationDate = creationDate;
         }
-        public Advert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, byte[] pictureByteArray, DateTime creationDate)
+        public Advert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString, DateTime creationDate)
         {
             Advert_Name = name;
             Advert_AnimalAge = animalAge;
             Advert_AnimalWeight = animalWeight;
             Advert_KindOfAnimal = kindOfAnimal;
             Advert_Description = description;
-            Advert_Image = pictureByteArray;
+            Advert_Image = pictureString;
             Advert_CreationDate = creationDate;
         }
     }

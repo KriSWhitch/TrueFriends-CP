@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[Advert](
 	[Advert_AnimalWeight] [decimal](10,2) NOT NULL, -- вес животного
 	[Advert_KindOfAnimal] [varchar](20) NULL, -- вид животного в объ€лении
 	[Advert_Description] [varchar](2000) NULL, -- описание объ€влени€
-	[Advert_Image] [varbinary](max) NULL, -- картинки прикрепленные к объ€влению
+	[Advert_Image] [varchar](max) NULL, -- картинки прикрепленные к объ€влению
 	[Advert_Creator] [int] NULL FOREIGN KEY ([Advert_Creator]) REFERENCES [User]([User_ID]), -- создатель объ€влени€
 	[Advert_CreationDate] [DateTime] NULL, -- дата создани€ объ€влени€
 )

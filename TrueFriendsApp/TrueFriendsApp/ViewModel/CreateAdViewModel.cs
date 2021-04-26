@@ -179,7 +179,7 @@ namespace TrueFriendsApp.ViewModel
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmap(ImageSource as BitmapImage));
-                DB.CreateAdvert(Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureByteArray);
+                DB.CreateAdvert(Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
                 MessageBox.Show(
                     "Объявление было успешно добавлено!",
                     "Успех!",
