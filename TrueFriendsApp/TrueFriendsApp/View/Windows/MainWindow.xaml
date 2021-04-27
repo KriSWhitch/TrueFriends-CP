@@ -61,7 +61,7 @@
                             <TextBlock Text="{DynamicResource m_MainWindow_Home}" VerticalAlignment="Center" Margin="20 10" FontSize="20"></TextBlock>
                         </StackPanel>
                     </Button>
-                    <Button Height="60" x:Name="CreateAdButton" Command="{Binding LoadCreateAdPageCommand, Mode=OneTime}" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left">
+                    <Button Height="60" x:Name="CreateAdButton" Visibility="{Binding CreateAdButtonVisibility}" Command="{Binding LoadCreateAdPageCommand, Mode=OneTime}" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Cursor="Hand">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" VerticalAlignment="Center" Margin="0 0 10 0"></materialDesign:PackIcon>
                             <TextBlock Text="{DynamicResource m_MainWindow_CreateAd}" VerticalAlignment="Center" Margin="20 10" FontSize="20"></TextBlock>
@@ -76,7 +76,7 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <ContentPresenter Grid.Column="1" x:Name="OutputView" Margin="60,60,0,0">
+        <ContentPresenter Content="{Binding CurrentPage}" Grid.Column="1" x:Name="OutputView" Margin="60,60,0,0">
         </ContentPresenter>
     </Grid>
 </Window>

@@ -1,11 +1,8 @@
 ﻿using DevExpress.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
@@ -13,7 +10,7 @@ namespace TrueFriendsApp.ViewModel
     class AdvertPageViewModel : ViewModelBase
     {
         private MainWindow mainForm;
-
+        private User user;
         private Advert ad;
         private int id;
         private string name;
@@ -23,6 +20,11 @@ namespace TrueFriendsApp.ViewModel
         private decimal animalWeight;
         private Picture image;
         private ImageSource imageSource;
+        public User User // Пользователь
+        {
+            get { return user; }
+            set { user = value; }
+        }
         public Advert Ad // Объявление
         {
             get { return ad; }
@@ -107,9 +109,12 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
+        public MainWindowViewModel MainFormVM { get; set; }
+
         public AdvertPageViewModel(MainWindow mainForm, Advert ad)
         {
             this.mainForm = mainForm;
+            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
             Ad = ad;
             ID = ad.Advert_ID;
             Name = ad.Advert_Name;
@@ -119,10 +124,16 @@ namespace TrueFriendsApp.ViewModel
             AnimalAge = ad.Advert_AnimalAge;
             Image = ad.Advert_Picture;
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
+            if (!MainFormVM.User.User_IsAdmin)
+            {
+                EditAdvertButtonVisibility = Visibility.Collapsed;
+                DeleteAdvertButtonVisibility = Visibility.Collapsed;
+            }
         }
 
         public AdvertPageViewModel(Advert ad)
         {
+            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
             Ad = ad;
             ID = ad.Advert_ID;
             Name = ad.Advert_Name;
@@ -132,12 +143,20 @@ namespace TrueFriendsApp.ViewModel
             AnimalAge = ad.Advert_AnimalAge;
             Image = ad.Advert_Picture;
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
+            if (!MainFormVM.User.User_IsAdmin)
+            {
+                EditAdvertButtonVisibility = Visibility.Collapsed;
+                DeleteAdvertButtonVisibility = Visibility.Collapsed;
+            }
         }
+
+        public Visibility EditAdvertButtonVisibility { get; set; }
+        public Visibility DeleteAdvertButtonVisibility { get; set; }
 
         public ICommand buttonBackToHomePage => new DelegateCommand(ButtonBackToHomePage);
         private void ButtonBackToHomePage()
         {
-            mainForm.LoadView(ViewType.Main);
+            mainForm.LoadView(MainWindowViewType.Main);
         }
 
         public ICommand buttonDeleteAdvert => new DelegateCommand(ButtonDeleteAdvert);
@@ -147,13 +166,13 @@ namespace TrueFriendsApp.ViewModel
             if (result == MessageBoxResult.Yes)
             {
                 DB.DeleteAdvert(Ad);
-                mainForm.LoadView(ViewType.Main);
+                mainForm.LoadView(MainWindowViewType.Main);
             }
         }
         public ICommand buttonEditAdvert => new DelegateCommand(ButtonEditAdvert);
         private void ButtonEditAdvert()
         {
-            mainForm.LoadView(ViewType.EditAd, Ad);
+            mainForm.LoadView(MainWindowViewType.EditAd, Ad);
         }
     }
 }

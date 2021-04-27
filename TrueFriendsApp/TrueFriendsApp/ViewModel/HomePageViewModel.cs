@@ -105,7 +105,7 @@ namespace TrueFriendsApp.ViewModel
         public ICommand rowDoubleClick => new DelegateCommand(RowDoubleClick);
         private void RowDoubleClick()
         {
-            mainForm.LoadView(ViewType.Advert, SelectedItem);
+            mainForm.LoadView(MainWindowViewType.Advert, SelectedItem);
         }
 
         public ICommand sortChangedClick => new DelegateCommand(SortChangedClick);

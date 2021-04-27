@@ -15,10 +15,10 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="ButtonEditAdvert" Command="{Binding buttonEditAdvert}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonEditAdvert" Command="{Binding buttonEditAdvert}" Visibility="{Binding EditAdvertButtonVisibility}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand">
                         <materialDesign:PackIcon Kind="Edit" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
-                    <Button x:Name="ButtonDeleteAdvert" Command="{Binding buttonDeleteAdvert}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <Button x:Name="ButtonDeleteAdvert" Command="{Binding buttonDeleteAdvert}" Visibility="{Binding DeleteAdvertButtonVisibility}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <materialDesign:PackIcon Kind="Delete" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
                 </StackPanel>

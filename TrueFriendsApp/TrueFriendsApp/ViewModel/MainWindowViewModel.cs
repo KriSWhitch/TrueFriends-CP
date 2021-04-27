@@ -1,28 +1,40 @@
 ﻿using DevExpress.Mvvm;
 using GalaSoft.MvvmLight.Command;
-using System;
-using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
-using TrueFriendsApp.ViewModel;
+using TrueFriendsApp.View.Windows;
 
 namespace TrueFriendsApp.ViewModel
 {
-    class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ViewModelBase
     {
         public MainWindowViewModel()
         {
 
         }
-        public MainWindowViewModel(string login, bool isAdmin)
+        public MainWindowViewModel(MainWindow mainForm, User user)
         {
-            Login = login;
-            IsAdmin = isAdmin;
+            this.mainForm = mainForm;
+            User = user;
+            if (!User.User_IsAdmin)
+            {
+                CreateAdButtonVisibility = Visibility.Collapsed;
+            }
         }
-        public string Login { get; set; }
-        public bool IsAdmin { get; set; }
+
+        private MainWindow mainForm;
+        private User user;
+        public User User
+        {
+            get { return user; }
+
+            set { user = value; }
+        }
+
+        public Visibility CreateAdButtonVisibility { get; set; }
+
         public IMainWindowsCodeBehind CodeBehind { get; set; }
 
         private RelayCommand _LoadCreateAdPageCommand;
@@ -40,7 +52,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadCreateAdPage()
         {
-            CodeBehind.LoadView(ViewType.CreateAd);
+            CodeBehind.LoadView(MainWindowViewType.CreateAd);
         }
 
         // Возвращение к главной вьюшке
@@ -59,7 +71,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadMain()
         {
-            CodeBehind.LoadView(ViewType.Main);
+            CodeBehind.LoadView(MainWindowViewType.Main);
         }
 
         private Visibility buttonOpenMenuVisibility = Visibility.Visible;
@@ -93,7 +105,8 @@ namespace TrueFriendsApp.ViewModel
         public ICommand buttonPopUpLogout => new DelegateCommand(ButtonPopUpLogout);
         public void ButtonPopUpLogout()
         {
-            Application.Current.Shutdown();
+            new AuthorizationWindow().Show();
+            mainForm.Close();
         }
 
         public ICommand buttonCloseMenu => new DelegateCommand(ButtonCloseMenu);

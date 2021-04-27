@@ -80,9 +80,8 @@ namespace TrueFriendsApp.ViewModel
                 {
                     if (user.User_Login == Login && user.User_Password == Encryption.Encrypt(Password))
                     {
-                        MessageBox.Show("Успешный вход!");
                         authorizationSuccessed = true;
-                        new MainWindow(Login, user.User_IsAdmin).Show();
+                        new MainWindow(user).Show();
                         Window.Close();
                     }
                 }

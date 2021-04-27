@@ -388,7 +388,6 @@ namespace TrueFriendsApp.ViewModel
         private void ResetPicture(ImageSource img) //,Grid grid
         {
             img = null;
-            //grid.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(192, 192, 192));
         }
 
     }
