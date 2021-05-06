@@ -31,10 +31,9 @@ CREATE TABLE [dbo].[Advert](
 )
 GO
 
-CREATE TABLE [dbo].[Comment](
-	[Comment_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор комментари€
-	[Comment_Text] [varchar](500) NULL, -- описание комментари€
-	[Comment_Creator] [int] NULL FOREIGN KEY ([Comment_Creator]) REFERENCES [User]([User_ID]), -- создатель комментари€
-	[Comment_CreationDate] [DateTime] NULL, -- дата создани€ комментари€
+CREATE TABLE [dbo].[Favorite](
+	[Favorite_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор избранного
+	[Favorite_User_ID] [int] NOT NULL, -- пользователь, который добавил объ€вление в избранное
+	[Favorite_Advert_ID] [int] NOT NULL, -- объ€вление занесенное пользователем в избранное
 )
 GO

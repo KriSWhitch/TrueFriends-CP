@@ -159,7 +159,6 @@ namespace TrueFriendsApp.ViewModel
             SortChangedClick();
             SearchText = "";
         }
-        
 
     }
 }

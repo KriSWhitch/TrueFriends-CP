@@ -116,6 +116,7 @@ namespace TrueFriendsApp.ViewModel
         {
             this.mainForm = mainForm;
             MainFormVM = (MainWindowViewModel)mainForm.DataContext;
+            User = MainFormVM.User;
             Ad = ad;
             ID = ad.Advert_ID;
             Name = ad.Advert_Name;
@@ -125,26 +126,7 @@ namespace TrueFriendsApp.ViewModel
             AnimalAge = ad.Advert_AnimalAge;
             Image = ad.Advert_Picture;
             ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
-            if (!MainFormVM.User.User_IsAdmin)
-            {
-                EditAdvertButtonVisibility = Visibility.Collapsed;
-                DeleteAdvertButtonVisibility = Visibility.Collapsed;
-            }
-        }
-
-        public AdvertPageViewModel(Advert ad)
-        {
-            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
-            Ad = ad;
-            ID = ad.Advert_ID;
-            Name = ad.Advert_Name;
-            KindOfAnimal = ad.Advert_KindOfAnimal;
-            Description = ad.Advert_Description;
-            AnimalWeight = ad.Advert_AnimalWeight;
-            AnimalAge = ad.Advert_AnimalAge;
-            Image = ad.Advert_Picture;
-            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
-            if (!MainFormVM.User.User_IsAdmin)
+            if (!User.User_IsAdmin)
             {
                 EditAdvertButtonVisibility = Visibility.Collapsed;
                 DeleteAdvertButtonVisibility = Visibility.Collapsed;
@@ -174,6 +156,12 @@ namespace TrueFriendsApp.ViewModel
         private void ButtonEditAdvert()
         {
             mainForm.LoadView(MainWindowViewType.EditAd, Ad);
+        }
+
+        public ICommand addToFavorite => new DelegateCommand(AddToFavorite);
+        private void AddToFavorite()
+        {
+            UnitOfWork.AddToFavorite(User.User_ID, Ad.Advert_ID);
         }
     }
 }

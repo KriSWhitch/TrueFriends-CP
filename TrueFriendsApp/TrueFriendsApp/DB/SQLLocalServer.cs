@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using TrueFriendsApp.Classes;
@@ -17,7 +18,32 @@ namespace TrueFriendsApp.DB
         private static DbContextOptions<AdvertContext> options = optionsBuilder.UseSqlServer(StringConnection).Options;
         private static DbContextOptionsBuilder<UserContext> optionsBuilderUser = new DbContextOptionsBuilder<UserContext>();
         private static DbContextOptions<UserContext> optionsUser = optionsBuilderUser.UseSqlServer(StringConnection).Options;
+        private static DbContextOptionsBuilder<FavoriteContext> optionsBuilderFavorite = new DbContextOptionsBuilder<FavoriteContext>();
+        private static DbContextOptions<FavoriteContext> optionsFavorite = optionsBuilderFavorite.UseSqlServer(StringConnection).Options;
 
+        public void AddToFavorite(int userID, int advertID)
+        {
+            try
+            {
+                FavoriteContext db = new FavoriteContext(optionsFavorite);
+                Favorite favorite = new Favorite(userID, advertID);
+                if (db.Favorite.Any(o => o.Favorite_User_ID == userID && o.Favorite_Advert_ID == advertID))
+                {
+                    db.Favorite.Remove(favorite);
+                    MessageBox.Show("Объявление убрано из избранного!");
+                }
+                else
+                {
+                    db.Favorite.Add(favorite);
+                    MessageBox.Show("Объявление добавлено в избранное!");
+                }
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.Message);
+            }
+        }
 
         public BindingList<User> GetUsers()
         {
