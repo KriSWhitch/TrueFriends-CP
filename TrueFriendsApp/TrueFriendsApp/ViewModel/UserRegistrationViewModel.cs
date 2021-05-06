@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View.Windows;
 
@@ -67,7 +68,7 @@ namespace TrueFriendsApp.ViewModel
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 var userExistsFlag = false;
-                BindingList<User> users = DB.GetUsers();
+                BindingList<User> users = UnitOfWork.GetUsers();
                 foreach (User user in users)
                 {
                     if (userExistsFlag == true) break;
@@ -78,7 +79,7 @@ namespace TrueFriendsApp.ViewModel
                     }
                 }
                 if (userExistsFlag == false) {
-                    DB.AddUser(Login, Encryption.Encrypt(Password));
+                    UnitOfWork.AddUser(Login, Encryption.Encrypt(Password));
                     MessageBox.Show("Ваш аккаунт был успешно создан!");
                 }
             }

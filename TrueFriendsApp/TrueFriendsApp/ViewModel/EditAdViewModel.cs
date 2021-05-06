@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using DevExpress.Mvvm;
 using FontAwesome.WPF;
 using Microsoft.Win32;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
@@ -187,7 +188,7 @@ namespace TrueFriendsApp.ViewModel
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
-                DB.EditAdvert(ID, Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
+                UnitOfWork.EditAdvert(ID, Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
                 MessageBox.Show(
                     "Объявление было успешно изменено!",
                     "Успех!",

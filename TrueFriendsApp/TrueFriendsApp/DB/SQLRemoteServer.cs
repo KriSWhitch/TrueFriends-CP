@@ -5,11 +5,12 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Threading.Tasks;
 using System.Windows;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 
 namespace TrueFriendsApp
 {
-    public static class DB
+    public class SQLRemoteServer : IRepository
     {
         private static string StringConnection = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private static DbContextOptionsBuilder<AdvertContext>  optionsBuilder = new DbContextOptionsBuilder<AdvertContext>();
@@ -18,7 +19,7 @@ namespace TrueFriendsApp
         private static DbContextOptions<UserContext> optionsUser = optionsBuilderUser.UseSqlServer(StringConnection).Options;
 
 
-        public static BindingList<User> GetUsers()
+        public BindingList<User> GetUsers()
         {
             BindingList<User> users = new BindingList<User>();
             try
@@ -35,7 +36,7 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void AddUser(string login, string password)
+        public void AddUser(string login, string password)
         {
             try
             {
@@ -50,7 +51,7 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
+        public void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
         {
 
             try
@@ -66,7 +67,7 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
+        public void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
         {
             try
             {
@@ -81,7 +82,7 @@ namespace TrueFriendsApp
             }
         }
 
-        public static void DeleteAdvert(Advert ad)
+        public void DeleteAdvert(Advert ad)
         {
             try
             {
@@ -95,7 +96,7 @@ namespace TrueFriendsApp
             }
         }
 
-        public static BindingList<Advert> GetAdverts()
+        public BindingList<Advert> GetAdverts()
         {
             BindingList<Advert> adverts = new BindingList<Advert>();
             try

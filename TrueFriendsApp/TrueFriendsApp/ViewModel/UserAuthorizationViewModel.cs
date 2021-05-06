@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 using TrueFriendsApp.View.Windows;
@@ -75,7 +76,7 @@ namespace TrueFriendsApp.ViewModel
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 bool authorizationSuccessed= false;
-                BindingList<User> users = DB.GetUsers();
+                BindingList<User> users = UnitOfWork.GetUsers();
                 foreach (User user in users)
                 {
                     if (user.User_Login == Login && user.User_Password == Encryption.Encrypt(Password))

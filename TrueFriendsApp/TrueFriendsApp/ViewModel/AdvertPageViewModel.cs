@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 
@@ -165,7 +166,7 @@ namespace TrueFriendsApp.ViewModel
             MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить объявление?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                DB.DeleteAdvert(Ad);
+                UnitOfWork.DeleteAdvert(Ad);
                 mainForm.LoadView(MainWindowViewType.Main);
             }
         }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 
@@ -16,19 +17,20 @@ namespace TrueFriendsApp.ViewModel
     class HomePageViewModel : ViewModelBase
     {
         private MainWindow mainForm;
-        public HomePageViewModel(MainWindow mainForm)
-        {
-            this.mainForm = mainForm;
-            TmpList = AdList;
-            CurrentSelection = Sorts.First();
-            SortChangedClick();
-        }
-
-        private BindingList<Advert> adList = DB.GetAdverts();
+        private BindingList<Advert> adList;
         private BindingList<Advert> tmpList;
         private Advert selectedItem;
         private Sort currentSelection;
         private string searchText;
+
+        public HomePageViewModel(MainWindow mainForm)
+        {
+            this.mainForm = mainForm;
+            adList = UnitOfWork.GetAdverts();
+            TmpList = AdList;
+            CurrentSelection = Sorts.First();
+            SortChangedClick();
+        }
 
         public BindingList<Advert> AdList
         {
