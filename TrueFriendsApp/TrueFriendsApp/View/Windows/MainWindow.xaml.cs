@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
+using TrueFriendsApp.View.Pages;
 using TrueFriendsApp.ViewModel;
 
 namespace TrueFriendsApp.View
@@ -34,7 +35,8 @@ namespace TrueFriendsApp.View
         Main,
         CreateAd,
         Advert,
-        EditAd
+        EditAd,
+        Favorite
     }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -88,6 +90,12 @@ namespace TrueFriendsApp.View
                     viewCreateAd.DataContext = vmCreateAd;
                     this.OutputView.Content = viewCreateAd;
                     break;
+                case MainWindowViewType.Favorite:
+                    FavoritePage viewFavorite = new FavoritePage();
+                    FavoritePageViewModel vmFavorite = new FavoritePageViewModel(this);
+                    viewFavorite.DataContext = vmFavorite;
+                    this.OutputView.Content = viewFavorite;
+                    break;
 
             }
         }
@@ -101,9 +109,16 @@ namespace TrueFriendsApp.View
                     viewEditAd.DataContext = vmEditAd;
                     this.OutputView.Content = viewEditAd;
                     break;
+            }
+        }
+
+        public void LoadView(MainWindowViewType typeView, Advert ad, MainWindowViewType typeViewPrev)
+        {
+            switch (typeView)
+            {
                 case MainWindowViewType.Advert:
                     AdvertPage viewAdvert = new AdvertPage();
-                    AdvertPageViewModel vmAdvert = new AdvertPageViewModel(this, ad);
+                    AdvertPageViewModel vmAdvert = new AdvertPageViewModel(this, ad, typeViewPrev);
                     viewAdvert.DataContext = vmAdvert;
                     this.OutputView.Content = viewAdvert;
                     break;

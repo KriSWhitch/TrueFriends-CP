@@ -21,6 +21,49 @@ namespace TrueFriendsApp.DB
         private static DbContextOptionsBuilder<FavoriteContext> optionsBuilderFavorite = new DbContextOptionsBuilder<FavoriteContext>();
         private static DbContextOptions<FavoriteContext> optionsFavorite = optionsBuilderFavorite.UseSqlServer(StringConnection).Options;
 
+        public BindingList<Advert> GetFavoriteAdverts(int userID)
+        {
+            BindingList<Advert> adverts = new BindingList<Advert>();
+            BindingList<Advert> favoriteAdverts = new BindingList<Advert>();
+            IEnumerable<Favorite> favorites = new List<Favorite>();
+            try
+            {
+                AdvertContext dbAdvert = new AdvertContext(options);
+                FavoriteContext dbFavorite = new FavoriteContext(optionsFavorite);
+                dbAdvert.Advert.Load();
+                dbFavorite.Favorite.Load();
+                adverts = dbAdvert.Advert.Local.ToBindingList();
+                favorites = dbFavorite.Favorite.Local.Where(x => x.Favorite_User_ID == userID);
+                foreach (var fav in favorites)
+                {
+                    foreach (var ad in adverts)
+                    {
+                        if (fav.Favorite_Advert_ID == ad.Advert_ID) favoriteAdverts.Add(ad);
+                    }
+                }
+
+                var tasks = new List<Task>();
+                Parallel.ForEach(favoriteAdverts, el => {
+                    tasks.Add(Task.Run(() =>
+                    {
+                        el.Advert_Picture = new Picture();
+                        el.Advert_Picture.PictureString = el.Advert_Image;
+                        el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
+                        el.Advert_ImageSource.Freeze();
+                    }));
+                });
+                Task t = Task.WhenAll(tasks);
+                t.Wait();
+                return favoriteAdverts;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return favoriteAdverts;
+            }
+        }
+
         public void AddToFavorite(int userID, int advertID)
         {
             try

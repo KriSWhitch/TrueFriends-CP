@@ -74,6 +74,25 @@ namespace TrueFriendsApp.ViewModel
             CodeBehind.LoadView(MainWindowViewType.Main);
         }
 
+        // Переход к избранным объявлениям
+        private RelayCommand _LoadFavoriteCommand;
+        public RelayCommand LoadFavoriteCommand
+        {
+            get
+            {
+                return _LoadFavoriteCommand = _LoadFavoriteCommand ??
+                  new RelayCommand(OnLoadFavorite, CanLoadFavorite);
+            }
+        }
+        private bool CanLoadFavorite()
+        {
+            return true;
+        }
+        private void OnLoadFavorite()
+        {
+            CodeBehind.LoadView(MainWindowViewType.Favorite);
+        }
+
         private Visibility buttonOpenMenuVisibility = Visibility.Visible;
         private Visibility buttonCloseMenuVisibility = Visibility.Collapsed;
 

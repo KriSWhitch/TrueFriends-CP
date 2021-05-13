@@ -3,6 +3,7 @@
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!-- MainWindow -->
     <v:String x:Key="m_MainWindow_Home">Home</v:String>
+    <v:String x:Key="m_MainWindow_Favorite">Favorite</v:String>
     <v:String x:Key="m_MainWindow_CreateAd">Create Ad</v:String>
     <v:String x:Key="m_MainWindow_GitHub">Github</v:String>
     <v:String x:Key="m_MainWindow_ButtonPopUpLogout">Logout</v:String>

@@ -32,18 +32,14 @@
             </StackPanel>
             <StackPanel Margin="0, 40, 0, 100">
                 <Label Content="Введите ваш пароль:"/>
-                <TextBox 
-                    x:Name="PasswordTextBox"
-                    Text="{Binding Password}"
-                    FontSize="15"
-                    Foreground="Black"
-                    Margin="5"
-                    Padding="5" Cursor="IBeam"/>
+                <PasswordBox x:Name="PasswordBox" PasswordChar="*" Grid.Row="1" FontSize="15" Grid.Column="1" Margin="5" Padding="5" Style="{DynamicResource MaterialDesignPasswordBox}" Cursor="IBeam"/>
             </StackPanel>
             <Button
                 Height="40" Cursor="Hand"
                 Command="{Binding signIn}"
-                Background="#5AA9B0" BorderBrush="#5AA9B0">
+                Background="#5AA9B0" 
+                BorderBrush="#5AA9B0" 
+                CommandParameter="{Binding ElementName=PasswordBox}">
                 <Grid>
                     <TextBlock 
                         Margin="5"

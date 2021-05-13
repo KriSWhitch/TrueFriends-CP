@@ -11,6 +11,7 @@ namespace TrueFriendsApp.ViewModel
     class AdvertPageViewModel : ViewModelBase
     {
         private MainWindow mainForm;
+        private MainWindowViewType prevView;
         private User user;
         private Advert ad;
         private int id;
@@ -112,9 +113,10 @@ namespace TrueFriendsApp.ViewModel
 
         public MainWindowViewModel MainFormVM { get; set; }
 
-        public AdvertPageViewModel(MainWindow mainForm, Advert ad)
+        public AdvertPageViewModel(MainWindow mainForm, Advert ad, MainWindowViewType typeViewPrev)
         {
             this.mainForm = mainForm;
+            prevView = typeViewPrev;
             MainFormVM = (MainWindowViewModel)mainForm.DataContext;
             User = MainFormVM.User;
             Ad = ad;
@@ -136,10 +138,10 @@ namespace TrueFriendsApp.ViewModel
         public Visibility EditAdvertButtonVisibility { get; set; }
         public Visibility DeleteAdvertButtonVisibility { get; set; }
 
-        public ICommand buttonBackToHomePage => new DelegateCommand(ButtonBackToHomePage);
-        private void ButtonBackToHomePage()
+        public ICommand buttonBackToPrevPage => new DelegateCommand(ButtonBackToPrevPage);
+        private void ButtonBackToPrevPage()
         {
-            mainForm.LoadView(MainWindowViewType.Main);
+            mainForm.LoadView(prevView);
         }
 
         public ICommand buttonDeleteAdvert => new DelegateCommand(ButtonDeleteAdvert);

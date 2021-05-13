@@ -198,3 +198,5 @@ E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\T
 E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.dll
 E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.pdb
 E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.genruntimeconfig.cache
+E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\Pages\FavoritePage.g.cs
+E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\Pages\FavoritePage.baml

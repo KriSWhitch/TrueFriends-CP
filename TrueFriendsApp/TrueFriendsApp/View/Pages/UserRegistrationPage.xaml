@@ -37,19 +37,17 @@
             </StackPanel>
             <StackPanel Margin="0, 40, 0, 100">
                 <Label Content="Введите ваш пароль:"/>
-                <TextBox 
-                    x:Name="PasswordTextBox"
-                    Text="{Binding Password}"
-                    FontSize="15"
-                    Foreground="Black"
-                    Margin="5"
-                    Padding="5" Cursor="IBeam"/>
+                <PasswordBox x:Name="PasswordBox" PasswordChar="*" Grid.Row="1" FontSize="15" Grid.Column="1" Margin="5" Padding="5" Style="{DynamicResource MaterialDesignPasswordBox}" Cursor="IBeam"/>
             </StackPanel>
             <Button 
                 FontSize="15" Height="40"
-                Margin="0, 15, 0, 0" Command="{Binding signUp}"
+                Margin="0, 15, 0, 0" 
+                CommandParameter="{Binding ElementName=PasswordBox}"
+                Command="{Binding signUp}"
                 Foreground="White"
-                Background="#5AA9B0" BorderBrush="#5AA9B0" Cursor="Hand">
+                Background="#5AA9B0" 
+                BorderBrush="#5AA9B0" 
+                Cursor="Hand">
                 <TextBlock TextAlignment="Center">Зарегистрироваться</TextBlock>
             </Button>
         </StackPanel>

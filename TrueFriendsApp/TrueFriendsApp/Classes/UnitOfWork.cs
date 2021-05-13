@@ -41,6 +41,11 @@ namespace TrueFriendsApp.Classes
             return db.GetAdverts();
         }
 
+        public static BindingList<Advert> GetFavoriteAdverts(int userID)
+        {
+            return db.GetFavoriteAdverts(userID);
+        }
+
         public static void AddToFavorite(int userID, int advertID)
         {
             db.AddToFavorite(userID, advertID);

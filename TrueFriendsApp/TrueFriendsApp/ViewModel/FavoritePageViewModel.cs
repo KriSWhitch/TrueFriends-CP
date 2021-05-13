@@ -14,7 +14,7 @@ using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
 {
-    class HomePageViewModel : ViewModelBase
+    class FavoritePageViewModel : ViewModelBase
     {
         private MainWindow mainForm;
         private BindingList<Advert> adList;
@@ -22,14 +22,25 @@ namespace TrueFriendsApp.ViewModel
         private Advert selectedItem;
         private Sort currentSelection;
         private string searchText;
+        private User user;
 
-        public HomePageViewModel(MainWindow mainForm)
+        public FavoritePageViewModel(MainWindow mainForm)
         {
             this.mainForm = mainForm;
-            adList = UnitOfWork.GetAdverts();
+            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
+            User = MainFormVM.User;
+            adList = UnitOfWork.GetFavoriteAdverts(User.User_ID);
             TmpList = AdList;
             CurrentSelection = Sorts.First();
             SortChangedClick();
+        }
+
+        public MainWindowViewModel MainFormVM { get; set; }
+
+        public User User // Пользователь
+        {
+            get { return user; }
+            set { user = value; }
         }
 
         public BindingList<Advert> AdList
@@ -107,7 +118,7 @@ namespace TrueFriendsApp.ViewModel
         public ICommand rowDoubleClick => new DelegateCommand(RowDoubleClick);
         private void RowDoubleClick()
         {
-            mainForm.LoadView(MainWindowViewType.Advert, SelectedItem, MainWindowViewType.Main);
+            mainForm.LoadView(MainWindowViewType.Advert, SelectedItem, MainWindowViewType.Favorite);
         }
 
         public ICommand sortChangedClick => new DelegateCommand(SortChangedClick);

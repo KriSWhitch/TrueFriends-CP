@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View.Windows;
@@ -62,9 +63,11 @@ namespace TrueFriendsApp.ViewModel
             CodeBehind.LoadView(ViewType.Authorization);
         }
 
-        public System.Windows.Input.ICommand signUp => new DelegateCommand(SignUp);
-        private void SignUp()
+        public ICommand<object> signUp => new DelegateCommand<object>(SignUp);
+        private void SignUp(object param)
         {
+            var passwordBox = param as PasswordBox;
+            Password = passwordBox.Password;
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 var userExistsFlag = false;

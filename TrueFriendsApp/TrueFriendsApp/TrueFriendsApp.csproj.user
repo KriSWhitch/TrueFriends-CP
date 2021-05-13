@@ -16,6 +16,9 @@
     <Compile Update="View\Pages\EditAdPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Pages\FavoritePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Pages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +33,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\Pages\FavoritePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>

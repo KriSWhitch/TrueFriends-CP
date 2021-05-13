@@ -10,7 +10,7 @@
         <StackPanel Margin="10" Orientation="Vertical">
             <DockPanel Height="40" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button x:Name="ButtonBackToHomePage" Command="{Binding buttonBackToHomePage}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Button x:Name="ButtonBackToPrevPage" Command="{Binding buttonBackToPrevPage}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Cursor="Hand">
                         <materialDesign:PackIcon Kind="ArrowLeft" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
                 </StackPanel>

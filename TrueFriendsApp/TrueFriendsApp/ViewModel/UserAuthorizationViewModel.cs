@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
@@ -70,9 +71,11 @@ namespace TrueFriendsApp.ViewModel
             CodeBehind.LoadView(ViewType.Registration);
         }
 
-        public System.Windows.Input.ICommand signIn => new DelegateCommand(SignIn);
-        private void SignIn()
+        public ICommand<object> signIn => new DelegateCommand<object>(SignIn);
+        private void SignIn(object param)
         {
+            var passwordBox = param as PasswordBox;
+            Password = passwordBox.Password;
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 bool authorizationSuccessed= false;
