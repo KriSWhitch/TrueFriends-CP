@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using TrueFriendsApp.DB;
 using TrueFriendsApp.Model;
 
 namespace TrueFriendsApp.Classes
 {
     static class UnitOfWork
     {
-        private static SQLRemoteServer db = new SQLRemoteServer();
+        private static SQLLocalServer db = new SQLLocalServer();
 
         public static BindingList<User> GetUsers()
         {
@@ -39,6 +40,11 @@ namespace TrueFriendsApp.Classes
         public static BindingList<Advert> GetAdverts()
         {
             return db.GetAdverts();
+        }
+
+        public static BindingList<Advert> GetLatestAdverts(int amount)
+        {
+            return db.GetLatestAdverts(amount);
         }
 
         public static BindingList<Advert> GetFavoriteAdverts(int userID)

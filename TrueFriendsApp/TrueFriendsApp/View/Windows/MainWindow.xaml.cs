@@ -33,6 +33,7 @@ namespace TrueFriendsApp.View
     public enum MainWindowViewType
     {
         Main,
+        BrowseAdverts,
         CreateAd,
         Advert,
         EditAd,
@@ -83,6 +84,15 @@ namespace TrueFriendsApp.View
                     view.DataContext = vm;
                     //отображаем
                     this.OutputView.Content = view;
+                    break;
+                case MainWindowViewType.BrowseAdverts:
+                    //загружаем вьюшку, ее вьюмодель
+                    BrowseAdvertsPage viewBrowseAdverts = new BrowseAdvertsPage();
+                    BrowseAdvertsViewModel vmBrowseAdverts = new BrowseAdvertsViewModel(this);
+                    //связываем их м/собой
+                    viewBrowseAdverts.DataContext = vmBrowseAdverts;
+                    //отображаем
+                    this.OutputView.Content = viewBrowseAdverts;
                     break;
                 case MainWindowViewType.CreateAd:
                     CreateAdPage viewCreateAd = new CreateAdPage();

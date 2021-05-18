@@ -8,12 +8,12 @@ namespace TrueFriendsApp.Classes
 {
     interface IRepository
     {
-        BindingList<User> GetUsers(); // получение всех объектов
-        void AddUser(string login, string password); // создание объекта
+        BindingList<User> GetUsers();
+        void AddUser(string login, string password);
         BindingList<Advert> GetAdverts();
-        void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString); // обновление объекта
-        void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString); // удаление объекта по id
-        void DeleteAdvert(Advert ad);  // сохранение изменений
+        void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString); 
+        void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString);
+        void DeleteAdvert(Advert ad);
         void AddToFavorite(int userID, int advertID);
     }
 }

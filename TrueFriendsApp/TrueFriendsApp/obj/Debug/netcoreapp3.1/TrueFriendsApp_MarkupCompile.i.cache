@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 E:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\App.xaml
-111678735706
+121402665897
 
-37-2025455089
+39-1106211053
 228-203512181
-resources\lang.ru-RU.xaml;resources\lang.xaml;View\Pages\AdvertPage.xaml;View\Pages\CreateAdPage.xaml;View\Pages\EditAdPage.xaml;View\Pages\FavoritePage.xaml;View\Pages\HomePage.xaml;View\Pages\UserAuthorizationPage.xaml;View\Pages\UserRegistrationPage.xaml;View\Windows\AuthorizationWindow.xaml;View\Windows\MainWindow.xaml;
+resources\lang.ru-RU.xaml;resources\lang.xaml;View\Pages\AdvertPage.xaml;View\Pages\BrowseAdvertsPage.xaml;View\Pages\CreateAdPage.xaml;View\Pages\EditAdPage.xaml;View\Pages\FavoritePage.xaml;View\Pages\HomePage.xaml;View\Pages\UserAuthorizationPage.xaml;View\Pages\UserRegistrationPage.xaml;View\Windows\AuthorizationWindow.xaml;View\Windows\MainWindow.xaml;
 
 False
 

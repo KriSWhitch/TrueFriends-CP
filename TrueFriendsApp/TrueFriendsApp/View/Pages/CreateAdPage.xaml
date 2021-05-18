@@ -7,7 +7,14 @@
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" MinHeight="620" MinWidth="1200">
     <Grid Background="White">
-        <StackPanel Margin="10" Orientation="Vertical">
+        <DockPanel Height="40" VerticalAlignment="Top" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button x:Name="ButtonBackToPrevPage" Command="{Binding buttonBackToPrevPage}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Cursor="Hand">
+                    <materialDesign:PackIcon Kind="ArrowLeft" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Margin="10 50 0 0" Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <StackPanel Margin="0 10 80 10" Orientation="Horizontal">
                     <Label x:Name="AdNameLabel" Content="{DynamicResource m_CreateAdPage_Name}" FontSize="20" Width="180" Height="40"></Label>
@@ -42,13 +49,13 @@
                     <fa:ImageAwesome Icon="{Binding Path=DescriptionValidationIcon, Mode=TwoWay, TargetNullValue=MinusCircle}" x:Name="DescriptionValidationImage" Visibility="{Binding Path=DescriptionValidationIconVisibility, Mode=TwoWay, TargetNullValue=Hidden}" Width="40" Height="40"></fa:ImageAwesome>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Height="400" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Height="370" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <Label Content="{DynamicResource m_CreateAdPage_Images}" FontSize="20" Width="180" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left"></Label>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" Margin="0 0 50 0">
                         <StackPanel Margin="0 10" Orientation="Horizontal">
                             <Grid x:Name="AdMainImageWrapper" Background="#C0C0C0">
-                                <Image x:Name="AdMainImage" Source="{Binding ImageSource}" Cursor="" Width="580" Height="320"></Image>
+                                <Image x:Name="AdMainImage" Source="{Binding ImageSource}" Cursor="" Width="580" Height="300"></Image>
                                 <Button x:Name="AdMainImageButtonClose" Command="{Binding imageButtonClose}" Visibility="Collapsed" Panel.ZIndex="100" Width="60" Height="60" Background="#5AA9B0" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Cursor="Hand">
                                     <materialDesign:PackIcon Kind="Close" Foreground="White" Width="35" Height="35" HorizontalAlignment="Center"></materialDesign:PackIcon>
                                 </Button>
@@ -57,9 +64,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
                         <Button x:Name="AddPhotoButton" Command="{Binding addPhotoButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{DynamicResource m_CreateAdPage_AdPhotoButton}" Margin="0 10 0 10" Width="470" Height="50" FontSize="20" Background="{x:Null}" BorderBrush="Black" Foreground="Black" Cursor="Hand"></Button>
-                        <TextBlock FontSize="20" Text="{DynamicResource m_CreateAdPage_Text1}" Margin="0 5 0 5" Panel.ZIndex="10" Foreground="Black"></TextBlock>
-                        <TextBlock FontSize="20" Text="{DynamicResource m_CreateAdPage_Text2}" Margin="0 15 0 5" Panel.ZIndex="10" Foreground="Black"></TextBlock>
-                        <Button x:Name="CreateAdButton" Command="{Binding createAdButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{DynamicResource m_CreateAdPage_CreateAdButton}" Margin="0 130 0 25" Width="470" Height="50" FontSize="20" Background="#5AA9B0" BorderBrush="#5AA9B0" Foreground="White"></Button>
+                        <Button x:Name="CreateAdButton" Command="{Binding createAdButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{DynamicResource m_CreateAdPage_CreateAdButton}" Margin="0 20 0 0" Width="470" Height="50" FontSize="20" Background="#5AA9B0" BorderBrush="#5AA9B0" Foreground="White"></Button>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

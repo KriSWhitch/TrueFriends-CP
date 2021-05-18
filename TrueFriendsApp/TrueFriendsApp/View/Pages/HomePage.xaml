@@ -11,74 +11,63 @@
              MinHeight="620" MinWidth="1200">
     <Grid Background="White">
         <StackPanel>
-            <DockPanel Height="40" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="20 0">
-                    <Label FontSize="16" VerticalAlignment="Center" Content="Сортировка:" Margin="0 0 20 0"></Label>
-                    <ComboBox
-                        x:Name="ComboBoxSort" ItemsSource="{Binding Sorts}"
-                        SelectedItem="{Binding CurrentSelection}" DisplayMemberPath="SortType" 
-                        SelectedValuePath="SortType" SelectedValue="{Binding CurrentSelection.SortType}"
-                        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Padding="5 0" 
-                        Height="30" Width="200" Foreground="Black" BorderBrush="#5AA9B0" Background="White" 
-                    >
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource m_HomePage_Description_Header}" Foreground="Black" FontSize="24" TextWrapping="Wrap" Width="550" HorizontalAlignment="Left" Margin="20 20 20 0"/>
+                    <TextBlock Text="{DynamicResource m_HomePage_Description}" Foreground="Black" FontSize="16" TextWrapping="Wrap" Width="550" HorizontalAlignment="Left" Margin="20 20"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource m_HomePage_Help_Header}" Foreground="Black" FontSize="24" TextWrapping="Wrap" Width="550" HorizontalAlignment="Left" Margin="20 20 20 0"/>
+                    <TextBlock Text="{DynamicResource m_HomePage_Help}" Foreground="Black" FontSize="16" TextWrapping="Wrap" Width="550" HorizontalAlignment="Left" Margin="20 20"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Foreground="Black" Text="{DynamicResource m_HomePage_LatestArivals_Header}" FontSize="24" TextWrapping="Wrap" Width="550" HorizontalAlignment="Left" Margin="20 20"/>
+                <StackPanel Orientation="Horizontal">
+                    <ListBox Grid.Column="2" x:Name="MainGrid" ItemsSource="{Binding AdList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Foreground="Black" Height="270">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <cmd:EventToCommand Command="{Binding sortChangedClick}"  
-                                CommandParameter="{Binding ElementName=ComboBoxSort}" />
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <cmd:EventToCommand Command="{Binding rowDoubleClick}"  
+                                CommandParameter="{Binding ElementName=MainGrid, Path=SelectedItem}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                    <Label FontSize="16" VerticalAlignment="Center" Content="Поиск по названию:" Margin="0 0 20 0"></Label>
-                    <TextBox
-                        x:Name="TextBlockSearch" FontSize="16" Padding="5 0" Margin="0 0 20 0" 
-                        Height="30" Width="200" Foreground="Black" Background="White"
-                        Text="{Binding SearchText}"
-                    />
-                    <Button x:Name="ButtonSearchAdvert" Command="{Binding buttonSearchAdvert}" Width="60" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Search" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
-                    </Button>
-                    <Button x:Name="ButtonClearSearch" Command="{Binding buttonClearSearch}" Width="60" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Remove" Foreground="Black" Width="30" Height="25"></materialDesign:PackIcon>
-                    </Button>
-                </StackPanel>
-            </DockPanel>
-            <ListBox Grid.Column="2" x:Name="MainGrid" ItemsSource="{Binding TmpList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Foreground="Black" Height="580">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <cmd:EventToCommand Command="{Binding rowDoubleClick}"  
-                                CommandParameter="{Binding ElementName=MainGrid, Path=SelectedItem}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="5" Orientation="Vertical">
-                            <Image HorizontalAlignment="Center" Source="{Binding Path=Advert_ImageSource}" Width="350" Height="210"/>
-                            <StackPanel Orientation="Vertical" Width="330">
-                                <StackPanel>
-                                    <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=Advert_Name}" Margin="5 5 0 10"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Возраст:" FontSize="14"></Label>
-                                        <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalAge}" />
-                                    </StackPanel>
-                                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                        <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Вес:" FontSize="14"></Label>
-                                        <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalWeight}" />
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5" Orientation="Vertical">
+                                    <Image HorizontalAlignment="Center" Source="{Binding Path=Advert_ImageSource}" Width="350" Height="210"/>
+                                    <StackPanel Orientation="Vertical" Width="330">
+                                        <StackPanel>
+                                            <TextBlock FontWeight="Bold" FontSize="18" Text="{Binding Path=Advert_Name}" Margin="5 5 0 10"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Возраст:" FontSize="14"></Label>
+                                                <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalAge}" />
+                                            </StackPanel>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <Label VerticalAlignment="Center" VerticalContentAlignment="Center" Content="Вес:" FontSize="14"></Label>
+                                                <TextBlock VerticalAlignment="Center" FontSize="14" Text="{Binding Path=Advert_AnimalWeight}" />
+                                            </StackPanel>
+                                        </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Center">
+                <TextBlock Text="{DynamicResource m_HomePage_Contacts_Header}" Foreground="Black" VerticalAlignment="Center"  FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 0"/>
+                <TextBlock Text="{DynamicResource m_HomePage_Contacts_Phone}" Foreground="Black" VerticalAlignment="Center"  FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 0"/>
+                <TextBlock Text="{DynamicResource m_HomePage_Contacts_Email}" Foreground="Black" VerticalAlignment="Center"  FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 0"/>
+                <TextBlock Text="{DynamicResource m_HomePage_Requisites_Header}" Foreground="Black" VerticalAlignment="Center"  FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 0"/>
+                <TextBlock Text="{DynamicResource m_HomePage_Requisites_BBBY}" Foreground="Black" VerticalAlignment="Center"  FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Right" Margin="20 0"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

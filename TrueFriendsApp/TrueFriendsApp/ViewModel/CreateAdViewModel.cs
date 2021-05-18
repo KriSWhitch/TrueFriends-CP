@@ -20,8 +20,7 @@ namespace TrueFriendsApp.ViewModel
     {
 
 
-        private MainWindow mainWindow;
-
+        private MainWindow mainForm;
         private int id;
         private string name;
         private string kindOfAnimal;
@@ -108,7 +107,7 @@ namespace TrueFriendsApp.ViewModel
 
         public CreateAdViewModel(MainWindow mainWindow)
         {
-            this.mainWindow = mainWindow;
+            this.mainForm = mainWindow;
         }
 
         bool completenessFlag = false;
@@ -161,6 +160,12 @@ namespace TrueFriendsApp.ViewModel
             //Button btn = (Button)sender;
             //btn.Visibility = Visibility.Collapsed;
             //ResetPicture(ImageSource);
+        }
+
+        public ICommand buttonBackToPrevPage => new DelegateCommand(ButtonBackToPrevPage);
+        private void ButtonBackToPrevPage()
+        {
+            mainForm.LoadView(MainWindowViewType.Main);
         }
 
         public ICommand createAdButton => new DelegateCommand(CreateAdButton);

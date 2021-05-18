@@ -198,5 +198,36 @@ namespace TrueFriendsApp
             }
         }
 
+        public BindingList<Advert> GetLatestAdverts(int amount)
+        {
+            BindingList<Advert> adverts = new BindingList<Advert>();
+            try
+            {
+                AdvertContext db = new AdvertContext(options);
+                db.Advert.Load();
+                adverts = db.Advert.Local.ToBindingList();
+                adverts = new BindingList<Advert>(adverts.OrderByDescending(x => x.Advert_CreationDate).Take(amount).ToList());
+                var tasks = new List<Task>();
+                Parallel.ForEach(adverts, el => {
+                    tasks.Add(Task.Run(() =>
+                    {
+                        el.Advert_Picture = new Picture();
+                        el.Advert_Picture.PictureString = el.Advert_Image;
+                        el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
+                        el.Advert_ImageSource.Freeze();
+                    }));
+                });
+                Task t = Task.WhenAll(tasks);
+                t.Wait();
+                return adverts;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return adverts;
+            }
+        }
+
     }
 }

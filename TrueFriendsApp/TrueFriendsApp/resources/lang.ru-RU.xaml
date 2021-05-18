@@ -5,14 +5,32 @@
     <v:String x:Key="m_MainWindow_Home">Главная</v:String>
     <v:String x:Key="m_MainWindow_Favorite">Избранные</v:String>
     <v:String x:Key="m_MainWindow_CreateAd">Создать объявление</v:String>
+    <v:String x:Key="m_MainWindow_BrowseAdverts">Объявления</v:String>
     <v:String x:Key="m_MainWindow_GitHub">Github</v:String>
     <v:String x:Key="m_MainWindow_ButtonPopUpLogout">Выйти</v:String>
     <!-- HomePage -->
-    <v:String x:Key="m_HomePage_ColumnName">Название</v:String>
-    <v:String x:Key="m_HomePage_ColumnKindOfAnimal">Категория</v:String>
-    <v:String x:Key="m_HomePage_ColumnAnimalAge">Возраст</v:String>
-    <v:String x:Key="m_HomePage_ColumnAnimalWeight">Вес</v:String>
-    <v:String x:Key="m_HomePage_ColumnImages">Фото</v:String>
+    <v:String x:Key="m_HomePage_Header">TrueFriends</v:String>
+    <v:String x:Key="m_HomePage_Description_Header">О нас</v:String>
+    <v:String x:Key="m_HomePage_Description">
+        «TrueFriends» — это добровольное, самоуправляемое объединение граждан, функционирующее на основе общности интересов для 
+        совместной реализации гражданских, социальных, культурных, а также других прав. Все собранные средства идут на помощь и 
+        содержание животных, которые находятся под опекой организации.
+    </v:String>
+    <v:String x:Key="m_HomePage_Help_Header">Как нам помочь?</v:String>
+    <v:String x:Key="m_HomePage_Help">
+        Финансовая помощь (реквизиты можно посмотреть ниже), стать волонтёром, оказать авто и фото помощь, передать корм и лекарства. 
+        В ветеринарной клинике «Альфавет», а так же в «ВетМедЦентр» на улице Восточная можно приобрести сертификаты на оказание помощи (лечения) и 
+        указать получателем «TrueFriends» или кличку конкретного животного под опекой организации. Также корм и лекарства можно оставить в ящиках 
+        сбора помощи животным в зоомагазинах.
+    </v:String>
+    <v:String x:Key="m_HomePage_LatestArivals_Header">Последние прибывшие носики:</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Header">Наши контакты:</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Phone">ТЕЛЕФОН: +375(29) 379-xx-xx</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Email">E-MAIL: truefriends@gmail.com</v:String>
+    <v:String x:Key="m_HomePage_Requisites_Header">Реквизиты:</v:String>
+    <v:String x:Key="m_HomePage_Requisites_BBBY">ОАО "АСБ Беларусбанк", БИК АКВВВY21511</v:String>
+    <!-- BrowseAdvertsPage -->
+
     <!-- CreateAdPage -->
     <v:String x:Key="m_CreateAdPage_Name">Название:</v:String>
     <v:String x:Key="m_CreateAdPage_KindOfAnimal">Вид:</v:String>

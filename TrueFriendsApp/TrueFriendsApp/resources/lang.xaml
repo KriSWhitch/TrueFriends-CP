@@ -5,14 +5,33 @@
     <v:String x:Key="m_MainWindow_Home">Home</v:String>
     <v:String x:Key="m_MainWindow_Favorite">Favorite</v:String>
     <v:String x:Key="m_MainWindow_CreateAd">Create Ad</v:String>
+    <v:String x:Key="m_MainWindow_BrowseAdverts">Browse Adverts</v:String>
     <v:String x:Key="m_MainWindow_GitHub">Github</v:String>
     <v:String x:Key="m_MainWindow_ButtonPopUpLogout">Logout</v:String>
     <!-- HomePage -->
-    <v:String x:Key="m_HomePage_ColumnName">Name</v:String>
-    <v:String x:Key="m_HomePage_ColumnKindOfAnimal">Kind</v:String>
-    <v:String x:Key="m_HomePage_ColumnAnimalAge">Age</v:String>
-    <v:String x:Key="m_HomePage_ColumnAnimalWeight">Weight</v:String>
-    <v:String x:Key="m_HomePage_ColumnImages">Photo</v:String>
+    <v:String x:Key="m_HomePage_Header">TrueFriends</v:String>
+    <v:String x:Key="m_HomePage_Description_Header">About Us</v:String>
+    <v:String x:Key="m_HomePage_Description">
+        TrueFriends is a voluntary, self-governing association of citizens operating on the basis of a community of interests for the joint 
+        implementation of civil, social, cultural and other rights. All the funds raised go to help and support the animals that are under 
+        the care of the organization.
+    </v:String>
+    <v:String x:Key="m_HomePage_Help_Header">How can you help us?</v:String>
+    <v:String x:Key="m_HomePage_Help">
+        Financial assistance (details can be found below), become a volunteer, provide auto and photo assistance, 
+        donate food and medicine. In the veterinary clinic "Alphabet", as well as in the "VetMedCenter" 
+        on Vostochnaya Street, you can purchase certificates for the provision of assistance (treatment) and indicate 
+        the recipient of "TrueFriends" or the name of a specific animal under the care of the organization. Also, food and medicine 
+        can be left in the pet care collection boxes at pet stores.
+    </v:String>
+    <v:String x:Key="m_HomePage_LatestArivals_Header">Latest arrivals:</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Header">Contacts:</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Phone">Phone: +375(29) 379-xx-xx</v:String>
+    <v:String x:Key="m_HomePage_Contacts_Email">E-MAIL: truefriends@gmail.com</v:String>
+    <v:String x:Key="m_HomePage_Requisites_Header">Requisites:</v:String>
+    <v:String x:Key="m_HomePage_Requisites_BBBY">JSC "ASB Belarusbank", BIK АКВВВY21511</v:String>
+    <!-- BrowseAdvertsPage -->
+    
     <!-- CreateAdPage -->
     <v:String x:Key="m_CreateAdPage_Name">Name:</v:String>
     <v:String x:Key="m_CreateAdPage_KindOfAnimal">Kind:</v:String>

@@ -72,7 +72,10 @@ namespace TrueFriendsApp.DB
                 Favorite favorite = new Favorite(userID, advertID);
                 if (db.Favorite.Any(o => o.Favorite_User_ID == userID && o.Favorite_Advert_ID == advertID))
                 {
-                    db.Favorite.Remove(favorite);
+                    db.Favorite.Load();
+                    var favorites = db.Favorite.Local.ToBindingList();
+                    Favorite favoriteToRemove = (from item in favorites where item.Favorite_User_ID == userID && item.Favorite_Advert_ID == advertID select item).First();
+                    db.Favorite.Remove(favoriteToRemove);
                     MessageBox.Show("Объявление убрано из избранного!");
                 }
                 else
@@ -173,6 +176,37 @@ namespace TrueFriendsApp.DB
                 AdvertContext db = new AdvertContext(options);
                 db.Advert.Load();
                 adverts = db.Advert.Local.ToBindingList();
+                var tasks = new List<Task>();
+                Parallel.ForEach(adverts, el => {
+                    tasks.Add(Task.Run(() =>
+                    {
+                        el.Advert_Picture = new Picture();
+                        el.Advert_Picture.PictureString = el.Advert_Image;
+                        el.Advert_ImageSource = ImageConverter.ImageSourceFromBitmap(el.Advert_Picture.Source);
+                        el.Advert_ImageSource.Freeze();
+                    }));
+                });
+                Task t = Task.WhenAll(tasks);
+                t.Wait();
+                return adverts;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return adverts;
+            }
+        }
+
+        public BindingList<Advert> GetLatestAdverts(int amount)
+        {
+            BindingList<Advert> adverts = new BindingList<Advert>();
+            try
+            {
+                AdvertContext db = new AdvertContext(options);
+                db.Advert.Load();
+                adverts = db.Advert.Local.ToBindingList();
+                adverts = new BindingList<Advert>(adverts.OrderByDescending(x => x.Advert_CreationDate).Take(amount).ToList());
                 var tasks = new List<Task>();
                 Parallel.ForEach(adverts, el => {
                     tasks.Add(Task.Run(() =>

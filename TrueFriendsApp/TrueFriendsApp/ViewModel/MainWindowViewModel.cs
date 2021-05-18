@@ -55,6 +55,25 @@ namespace TrueFriendsApp.ViewModel
             CodeBehind.LoadView(MainWindowViewType.CreateAd);
         }
 
+        // Страница для просмотра объявлений
+        private RelayCommand _LoadBrowseAdvertsCommand;
+        public RelayCommand LoadBrowseAdvertsCommand
+        {
+            get
+            {
+                return _LoadBrowseAdvertsCommand = _LoadBrowseAdvertsCommand ??
+                  new RelayCommand(OnLoadBrowseAdverts, CanLoadBrowseAdverts);
+            }
+        }
+        private bool CanLoadBrowseAdverts()
+        {
+            return true;
+        }
+        private void OnLoadBrowseAdverts()
+        {
+            CodeBehind.LoadView(MainWindowViewType.BrowseAdverts);
+        }
+
         // Возвращение к главной вьюшке
         private RelayCommand _LoadMainCommand;
         public RelayCommand LoadMainCommand
