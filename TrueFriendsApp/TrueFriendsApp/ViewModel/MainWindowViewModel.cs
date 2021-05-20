@@ -1,14 +1,47 @@
 ﻿using DevExpress.Mvvm;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
+using TrueFriendsApp.View.Pages;
 using TrueFriendsApp.View.Windows;
 
 namespace TrueFriendsApp.ViewModel
 {
-    public class MainWindowViewModel : ViewModelBase
+    public interface IMainWindowsCodeBehind
+    {
+        /// <summary>
+        /// Показ сообщения для пользователя
+        /// </summary>
+        /// <param name="message">текст сообщения</param>
+        void ShowMessage(string message);
+
+        /// <summary>
+        /// Загрузка нужной View
+        /// </summary>
+        /// <param name="view">экземпляр UserControl</param>
+        void LoadView(MainWindowViewType typeView);
+    }
+
+    /// <summary>
+    /// Типы вьюшек для загрузки
+    /// </summary>
+    public enum MainWindowViewType
+    {
+        Main,
+        BrowseAdverts,
+        CreateAd,
+        Advert,
+        EditAd,
+        Favorite
+    }
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    /// 
+    public class MainWindowViewModel : ViewModelBase, IMainWindowsCodeBehind
     {
         public MainWindowViewModel()
         {
@@ -24,7 +57,78 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
+        public void LoadView(MainWindowViewType typeView)
+        {
+            switch (typeView)
+            {
+                case MainWindowViewType.Main:
+                    //загружаем вьюшку, ее вьюмодель
+                    HomePage view = new HomePage();
+                    HomePageViewModel vm = new HomePageViewModel(this);
+                    //связываем их м/собой
+                    view.DataContext = vm;
+                    //отображаем
+                    OutputView = view;
+                    break;
+                case MainWindowViewType.BrowseAdverts:
+                    //загружаем вьюшку, ее вьюмодель
+                    BrowseAdvertsPage viewBrowseAdverts = new BrowseAdvertsPage();
+                    BrowseAdvertsViewModel vmBrowseAdverts = new BrowseAdvertsViewModel(this);
+                    //связываем их м/собой
+                    viewBrowseAdverts.DataContext = vmBrowseAdverts;
+                    //отображаем
+                    OutputView = viewBrowseAdverts;
+                    break;
+                case MainWindowViewType.CreateAd:
+                    CreateAdPage viewCreateAd = new CreateAdPage();
+                    CreateAdViewModel vmCreateAd = new CreateAdViewModel(this);
+                    viewCreateAd.DataContext = vmCreateAd;
+                    OutputView = viewCreateAd;
+                    break;
+                case MainWindowViewType.Favorite:
+                    FavoritePage viewFavorite = new FavoritePage();
+                    FavoritePageViewModel vmFavorite = new FavoritePageViewModel(this);
+                    viewFavorite.DataContext = vmFavorite;
+                    OutputView = viewFavorite;
+                    break;
+
+            }
+        }
+        public void LoadView(MainWindowViewType typeView, Advert ad)
+        {
+            switch (typeView)
+            {
+                case MainWindowViewType.EditAd:
+                    EditAdPage viewEditAd = new EditAdPage();
+                    EditAdViewModel vmEditAd = new EditAdViewModel(this, ad);
+                    viewEditAd.DataContext = vmEditAd;
+                    OutputView = viewEditAd;
+                    break;
+            }
+        }
+
+        public void LoadView(MainWindowViewType typeView, Advert ad, MainWindowViewType typeViewPrev)
+        {
+            switch (typeView)
+            {
+                case MainWindowViewType.Advert:
+                    AdvertPage viewAdvert = new AdvertPage();
+                    AdvertPageViewModel vmAdvert = new AdvertPageViewModel(this, ad, typeViewPrev);
+                    viewAdvert.DataContext = vmAdvert;
+                    OutputView = viewAdvert;
+                    break;
+
+            }
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+
         private MainWindow mainForm;
+        public UserControl outputView = null;
         private User user;
         public User User
         {
@@ -33,9 +137,20 @@ namespace TrueFriendsApp.ViewModel
             set { user = value; }
         }
 
-        public Visibility CreateAdButtonVisibility { get; set; }
+        public UserControl OutputView
+        {
+            get
+            {
+                return outputView;
+            }
+            set
+            {
+                outputView = value;
+                RaisePropertyChanged("OutputView");
+            }
+        }
 
-        public IMainWindowsCodeBehind CodeBehind { get; set; }
+        public Visibility CreateAdButtonVisibility { get; set; }
 
         private RelayCommand _LoadCreateAdPageCommand;
         public RelayCommand LoadCreateAdPageCommand
@@ -52,7 +167,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadCreateAdPage()
         {
-            CodeBehind.LoadView(MainWindowViewType.CreateAd);
+            LoadView(MainWindowViewType.CreateAd);
         }
 
         // Страница для просмотра объявлений
@@ -71,7 +186,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadBrowseAdverts()
         {
-            CodeBehind.LoadView(MainWindowViewType.BrowseAdverts);
+            LoadView(MainWindowViewType.BrowseAdverts);
         }
 
         // Возвращение к главной вьюшке
@@ -90,7 +205,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadMain()
         {
-            CodeBehind.LoadView(MainWindowViewType.Main);
+            LoadView(MainWindowViewType.Main);
         }
 
         // Переход к избранным объявлениям
@@ -109,7 +224,7 @@ namespace TrueFriendsApp.ViewModel
         }
         private void OnLoadFavorite()
         {
-            CodeBehind.LoadView(MainWindowViewType.Favorite);
+            LoadView(MainWindowViewType.Favorite);
         }
 
         private Visibility buttonOpenMenuVisibility = Visibility.Visible;
@@ -138,6 +253,12 @@ namespace TrueFriendsApp.ViewModel
                 buttonCloseMenuVisibility = value;
                 RaisePropertyChanged("ButtonCloseMenuVisibility");
             }
+        }
+        
+        public ICommand windowLoaded => new DelegateCommand(WindowLoaded);
+        public void WindowLoaded()
+        {
+            LoadView(MainWindowViewType.Main);
         }
 
         public ICommand buttonPopUpLogout => new DelegateCommand(ButtonPopUpLogout);

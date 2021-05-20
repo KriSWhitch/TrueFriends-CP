@@ -16,14 +16,14 @@ namespace TrueFriendsApp.ViewModel
 {
     class BrowseAdvertsViewModel : ViewModelBase
     {
-        private MainWindow mainForm;
+        private MainWindowViewModel mainForm;
         private BindingList<Advert> adList;
         private BindingList<Advert> tmpList;
         private Advert selectedItem;
         private Sort currentSelection;
         private string searchText;
 
-        public BrowseAdvertsViewModel(MainWindow mainForm)
+        public BrowseAdvertsViewModel(MainWindowViewModel mainForm)
         {
             this.mainForm = mainForm;
             adList = UnitOfWork.GetAdverts();

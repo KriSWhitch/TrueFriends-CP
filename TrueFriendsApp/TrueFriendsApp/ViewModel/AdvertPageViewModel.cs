@@ -10,7 +10,7 @@ namespace TrueFriendsApp.ViewModel
 {
     class AdvertPageViewModel : ViewModelBase
     {
-        private MainWindow mainForm;
+        private MainWindowViewModel mainForm;
         private MainWindowViewType prevView;
         private User user;
         private Advert ad;
@@ -111,14 +111,11 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
-        public MainWindowViewModel MainFormVM { get; set; }
-
-        public AdvertPageViewModel(MainWindow mainForm, Advert ad, MainWindowViewType typeViewPrev)
+        public AdvertPageViewModel(MainWindowViewModel mainForm, Advert ad, MainWindowViewType typeViewPrev)
         {
             this.mainForm = mainForm;
             prevView = typeViewPrev;
-            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
-            User = MainFormVM.User;
+            User = mainForm.User;
             Ad = ad;
             ID = ad.Advert_ID;
             Name = ad.Advert_Name;

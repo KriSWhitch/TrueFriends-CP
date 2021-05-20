@@ -16,7 +16,7 @@ namespace TrueFriendsApp.ViewModel
 {
     class FavoritePageViewModel : ViewModelBase
     {
-        private MainWindow mainForm;
+        private MainWindowViewModel mainForm;
         private BindingList<Advert> adList;
         private BindingList<Advert> tmpList;
         private Advert selectedItem;
@@ -24,18 +24,15 @@ namespace TrueFriendsApp.ViewModel
         private string searchText;
         private User user;
 
-        public FavoritePageViewModel(MainWindow mainForm)
+        public FavoritePageViewModel(MainWindowViewModel mainForm)
         {
             this.mainForm = mainForm;
-            MainFormVM = (MainWindowViewModel)mainForm.DataContext;
-            User = MainFormVM.User;
+            User = mainForm.User;
             adList = UnitOfWork.GetFavoriteAdverts(User.User_ID);
             TmpList = AdList;
             CurrentSelection = Sorts.First();
             SortChangedClick();
         }
-
-        public MainWindowViewModel MainFormVM { get; set; }
 
         public User User // Пользователь
         {

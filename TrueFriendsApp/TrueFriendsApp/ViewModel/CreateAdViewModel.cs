@@ -20,7 +20,7 @@ namespace TrueFriendsApp.ViewModel
     {
 
 
-        private MainWindow mainForm;
+        private MainWindowViewModel mainForm;
         private int id;
         private string name;
         private string kindOfAnimal;
@@ -105,7 +105,7 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
-        public CreateAdViewModel(MainWindow mainWindow)
+        public CreateAdViewModel(MainWindowViewModel mainWindow)
         {
             this.mainForm = mainWindow;
         }

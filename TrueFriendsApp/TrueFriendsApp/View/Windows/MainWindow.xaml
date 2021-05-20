@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="TrueFriends" MinHeight="720" Height="720" MinWidth="1280" Width="1280" Icon="../../images/icon.ico" Foreground="White"
-        Loaded="MainWindow_Loaded" ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize">
+    <intr:Interaction.Triggers>
+        <intr:EventTrigger EventName="Loaded">
+            <intr:InvokeCommandAction Command="{Binding windowLoaded}"/>
+        </intr:EventTrigger>
+    </intr:Interaction.Triggers>
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -88,7 +94,6 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <ContentPresenter Content="{Binding CurrentPage}" Grid.Column="1" x:Name="OutputView" Margin="60,60,0,0">
-        </ContentPresenter>
+        <ContentControl  Content="{Binding OutputView}" Grid.Column="1" x:Name="OutputView" Margin="60,60,0,0" />
     </Grid>
 </Window>

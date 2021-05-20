@@ -16,7 +16,7 @@ namespace TrueFriendsApp.ViewModel
 {
     class EditAdViewModel : ViewModelBase
     {
-        private MainWindow mainWindow;
+        private MainWindowViewModel mainWindow;
 
         private int id;
         private string name;
@@ -103,7 +103,7 @@ namespace TrueFriendsApp.ViewModel
         }
 
 
-        public EditAdViewModel(MainWindow mainWindow, Advert ad)
+        public EditAdViewModel(MainWindowViewModel mainWindow, Advert ad)
         {
             this.mainWindow = mainWindow;
 

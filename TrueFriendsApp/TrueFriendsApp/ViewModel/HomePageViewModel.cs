@@ -17,12 +17,12 @@ namespace TrueFriendsApp.ViewModel
 {
     class HomePageViewModel : ViewModelBase
     {
-        private MainWindow mainForm;
+        private MainWindowViewModel mainForm;
         private BindingList<Advert> adList;
         private Advert selectedItem;
         private Sort currentSelection;
 
-        public HomePageViewModel(MainWindow mainForm)
+        public HomePageViewModel(MainWindowViewModel mainForm)
         {
             this.mainForm = mainForm;
             adList = UnitOfWork.GetLatestAdverts(3);
