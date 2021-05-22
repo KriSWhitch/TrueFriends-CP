@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AtctEOxEumyvIvP9agRZhIQEAtCnuQl0PG3IeLK3SSNhkSGIdSFuEjd2kznEtAaAKztkvb7tielnd/37dnVtGA==",
+  "dgSpecHash": "OIaxB7j9ppsxdO/AjxaDPjdp3ulyMqQk+Sy3ufs3A4oIKx07RegChSE79yZRpJyibWlwXT/2BZc3EcVGIZUh/w==",
   "success": true,
-  "projectFilePath": "E:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
+  "projectFilePath": "D:\\GitHub\\TrueFriends-CP\\TrueFriendsApp\\TrueFriendsApp\\TrueFriendsApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
     "C:\\Users\\KriSWhitch\\.nuget\\packages\\devexpressmvvm\\20.2.3\\devexpressmvvm.20.2.3.nupkg.sha512",

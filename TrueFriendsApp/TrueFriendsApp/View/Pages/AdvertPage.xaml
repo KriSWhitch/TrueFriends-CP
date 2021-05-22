@@ -15,7 +15,7 @@
                     </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Command="{Binding addToFavorite}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand">
+                    <Button Command="{Binding addToFavorite}" Visibility="{Binding AddFavoriteButtonVisibility}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand">
                         <materialDesign:PackIcon Kind="Favorite" Foreground="Red" Width="30" Height="25"></materialDesign:PackIcon>
                     </Button>
                     <Button x:Name="ButtonEditAdvert" Command="{Binding buttonEditAdvert}" Visibility="{Binding EditAdvertButtonVisibility}" Width="70" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Cursor="Hand">

@@ -1,8 +1,10 @@
 ﻿using DevExpress.Mvvm;
 using GalaSoft.MvvmLight.Command;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 using TrueFriendsApp.View;
 using TrueFriendsApp.View.Pages;
@@ -54,6 +56,9 @@ namespace TrueFriendsApp.ViewModel
             if (!User.User_IsAdmin)
             {
                 CreateAdButtonVisibility = Visibility.Collapsed;
+            } else
+            {
+                FavoriteButtonVisibility = Visibility.Collapsed;
             }
         }
 
@@ -151,6 +156,7 @@ namespace TrueFriendsApp.ViewModel
         }
 
         public Visibility CreateAdButtonVisibility { get; set; }
+        public Visibility FavoriteButtonVisibility { get; set; }
 
         private RelayCommand _LoadCreateAdPageCommand;
         public RelayCommand LoadCreateAdPageCommand
@@ -268,6 +274,20 @@ namespace TrueFriendsApp.ViewModel
             mainForm.Close();
         }
 
+        public ICommand buttonPopUpRefresh => new DelegateCommand(ButtonPopUpRefresh);
+        public void ButtonPopUpRefresh()
+        {
+            BindingList<User> users = UnitOfWork.GetUsers();
+            foreach (User user in users)
+            {
+                if (user.User_Login == User.User_Login && user.User_Password == User.User_Password)
+                {
+                    new MainWindow(user).Show();
+                }
+            }
+            mainForm.Close();
+        }
+
         public ICommand buttonCloseMenu => new DelegateCommand(ButtonCloseMenu);
         public void ButtonCloseMenu()
         {
@@ -280,12 +300,6 @@ namespace TrueFriendsApp.ViewModel
         {
             ButtonOpenMenuVisibility = Visibility.Collapsed;
             ButtonCloseMenuVisibility = Visibility.Visible;
-        }
-
-        public ICommand gitHubButton => new DelegateCommand(GitHubButton);
-        public void GitHubButton()
-        {
-            System.Diagnostics.Process.Start("explorer.exe", "https://github.com/KriSWhitch/TrueFriends-CP");
         }
 
         public ICommand buttonFAQ => new DelegateCommand(ButtonFAQ);

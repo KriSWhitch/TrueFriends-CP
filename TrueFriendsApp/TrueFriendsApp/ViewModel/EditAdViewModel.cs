@@ -147,28 +147,12 @@ namespace TrueFriendsApp.ViewModel
             };
             if (openFileDialog.ShowDialog() == true && IsValidImage(openFileDialog.FileName))
             {
-                if (ImageSource == null)
-                {
-                    ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
-                    //AdMainImageButtonClose.Visibility = Visibility.Visible;
-                    //AdMainImageWrapper.Background = new SolidColorBrush(Colors.Transparent);
-                }
-                else
-                {
-                    MessageBox.Show("Вы не можете добавить более 1 фотографии!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
             }
             else
             {
                 MessageBox.Show("Вы должны выбрать картинку!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-        public ICommand imageButtonClose => new DelegateCommand(ImageButtonClose);
-        private void ImageButtonClose()
-        {
-            //Button btn = (Button)sender;
-            //btn.Visibility = Visibility.Collapsed;
-            //ResetPicture(ImageSource);
         }
 
         public ICommand createAdButton => new DelegateCommand(CreateAdButton);

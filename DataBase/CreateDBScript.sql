@@ -33,7 +33,7 @@ GO
 
 CREATE TABLE [dbo].[Favorite](
 	[Favorite_ID] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY, -- идентификатор избранного
-	[Favorite_User_ID] [int] NOT NULL, -- пользователь, который добавил объ€вление в избранное
-	[Favorite_Advert_ID] [int] NOT NULL, -- объ€вление занесенное пользователем в избранное
+	[Favorite_User_ID] [int] NOT NULL FOREIGN KEY ([Favorite_User_ID]) REFERENCES [User]([User_ID]), -- пользователь, который добавил объ€вление в избранное
+	[Favorite_Advert_ID] [int] NOT NULL FOREIGN KEY ([Favorite_Advert_ID]) REFERENCES [Advert]([Advert_ID]), -- объ€вление занесенное пользователем в избранное
 )
 GO

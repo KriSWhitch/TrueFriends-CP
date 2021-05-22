@@ -129,11 +129,15 @@ namespace TrueFriendsApp.ViewModel
             {
                 EditAdvertButtonVisibility = Visibility.Collapsed;
                 DeleteAdvertButtonVisibility = Visibility.Collapsed;
+            } else
+            {
+                AddFavoriteButtonVisibility = Visibility.Collapsed;
             }
         }
 
         public Visibility EditAdvertButtonVisibility { get; set; }
         public Visibility DeleteAdvertButtonVisibility { get; set; }
+        public Visibility AddFavoriteButtonVisibility { get; set; }
 
         public ICommand buttonBackToPrevPage => new DelegateCommand(ButtonBackToPrevPage);
         private void ButtonBackToPrevPage()
