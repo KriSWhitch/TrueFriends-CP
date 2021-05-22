@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -270,6 +271,7 @@ namespace TrueFriendsApp.ViewModel
         public ICommand buttonPopUpLogout => new DelegateCommand(ButtonPopUpLogout);
         public void ButtonPopUpLogout()
         {
+            UnitOfWork.Refresh();
             new AuthorizationWindow().Show();
             mainForm.Close();
         }
@@ -277,7 +279,8 @@ namespace TrueFriendsApp.ViewModel
         public ICommand buttonPopUpRefresh => new DelegateCommand(ButtonPopUpRefresh);
         public void ButtonPopUpRefresh()
         {
-            BindingList<User> users = UnitOfWork.GetUsers();
+            UnitOfWork.Refresh();
+            IEnumerable<User> users = UnitOfWork.Users.Get();
             foreach (User user in users)
             {
                 if (user.User_Login == User.User_Login && user.User_Password == User.User_Password)

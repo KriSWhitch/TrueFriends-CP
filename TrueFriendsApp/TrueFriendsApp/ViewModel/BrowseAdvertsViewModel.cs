@@ -17,8 +17,8 @@ namespace TrueFriendsApp.ViewModel
     class BrowseAdvertsViewModel : ViewModelBase
     {
         private MainWindowViewModel mainForm;
-        private BindingList<Advert> adList;
-        private BindingList<Advert> tmpList;
+        private IEnumerable<Advert> adList;
+        private IEnumerable<Advert> tmpList;
         private Advert selectedItem;
         private Sort currentSelection;
         private string searchText;
@@ -26,13 +26,13 @@ namespace TrueFriendsApp.ViewModel
         public BrowseAdvertsViewModel(MainWindowViewModel mainForm)
         {
             this.mainForm = mainForm;
-            adList = UnitOfWork.GetAdverts();
+            adList = UnitOfWork.Adverts.Get();
             TmpList = AdList;
             CurrentSelection = Sorts.First();
             SortChangedClick();
         }
 
-        public BindingList<Advert> AdList
+        public IEnumerable<Advert> AdList
         {
             get
             {
@@ -45,7 +45,7 @@ namespace TrueFriendsApp.ViewModel
             }
         }
 
-        public BindingList<Advert> TmpList
+        public IEnumerable<Advert> TmpList
         {
             get
             {

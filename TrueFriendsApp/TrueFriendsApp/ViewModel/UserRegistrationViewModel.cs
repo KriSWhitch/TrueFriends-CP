@@ -71,7 +71,7 @@ namespace TrueFriendsApp.ViewModel
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 var userExistsFlag = false;
-                BindingList<User> users = UnitOfWork.GetUsers();
+                IEnumerable<User> users = UnitOfWork.Users.Get();
                 foreach (User user in users)
                 {
                     if (userExistsFlag == true) break;
@@ -82,7 +82,8 @@ namespace TrueFriendsApp.ViewModel
                     }
                 }
                 if (userExistsFlag == false) {
-                    UnitOfWork.AddUser(Login, Encryption.Encrypt(Password));
+                    User user = new User(Login, Encryption.Encrypt(Password), false);
+                    UnitOfWork.Users.Create(user);
                     MessageBox.Show("Ваш аккаунт был успешно создан!");
                 }
             }

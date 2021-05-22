@@ -79,7 +79,7 @@ namespace TrueFriendsApp.ViewModel
             if (ValidationRules.IsLoginValid(Login) && ValidationRules.IsPasswordValid(Password))
             {
                 bool authorizationSuccessed= false;
-                BindingList<User> users = UnitOfWork.GetUsers();
+                IEnumerable<User> users = UnitOfWork.Users.Get();
                 foreach (User user in users)
                 {
                     if (user.User_Login == Login && user.User_Password == Encryption.Encrypt(Password))

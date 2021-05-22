@@ -101,22 +101,20 @@ namespace TrueFriendsApp.ViewModel
                 RaisePropertyChanged("ImageSource");
             }
         }
-
+        public Advert Advert { get; set; }
 
         public EditAdViewModel(MainWindowViewModel mainWindow, Advert ad)
         {
             this.mainWindow = mainWindow;
 
-            ID = ad.Advert_ID;
-            Name = ad.Advert_Name;
-            KindOfAnimal = ad.Advert_KindOfAnimal;
-            Description = ad.Advert_Description;
-            AnimalAge = ad.Advert_AnimalAge;
-            AnimalWeight = ad.Advert_AnimalWeight;
-
-            ImageSource = ImageConverter.ImageSourceFromBitmap(ad.Advert_Picture.Source);
-            //AdMainImageButtonClose.Visibility = Visibility.Visible;
-            //AdMainImageWrapper.Background = new SolidColorBrush(Colors.Transparent);
+            Advert = ad;
+            ID = Advert.Advert_ID;
+            Name = Advert.Advert_Name;
+            KindOfAnimal = Advert.Advert_KindOfAnimal;
+            Description = Advert.Advert_Description;
+            AnimalAge = Advert.Advert_AnimalAge;
+            AnimalWeight = Advert.Advert_AnimalWeight;
+            ImageSource = ImageConverter.ImageSourceFromBitmap(Advert.Advert_Picture.Source);
         }
 
         bool completenessFlag = false;
@@ -172,7 +170,14 @@ namespace TrueFriendsApp.ViewModel
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmapFromInteropBitmap(ImageSource));
-                UnitOfWork.EditAdvert(ID, Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
+                Advert.Advert_Name = Name;
+                Advert.Advert_KindOfAnimal = KindOfAnimal;
+                Advert.Advert_Description = Description;
+                Advert.Advert_AnimalAge = AnimalAge;
+                Advert.Advert_AnimalWeight = AnimalWeight;
+                Advert.Advert_Picture = Image;
+                Advert.Advert_Image = Advert.Advert_Picture.PictureString;
+                UnitOfWork.Adverts.Update(Advert);
                 MessageBox.Show(
                     "Объявление было успешно изменено!",
                     "Успех!",

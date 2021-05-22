@@ -25,7 +25,7 @@ namespace TrueFriendsApp.ViewModel
         public HomePageViewModel(MainWindowViewModel mainForm)
         {
             this.mainForm = mainForm;
-            adList = UnitOfWork.GetLatestAdverts(3);
+            adList = UnitOfWork.Adverts.GetLatestAdverts(3);
         }
 
         public BindingList<Advert> AdList

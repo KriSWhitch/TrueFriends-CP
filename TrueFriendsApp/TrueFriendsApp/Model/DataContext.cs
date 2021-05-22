@@ -5,12 +5,15 @@ using System.Text;
 
 namespace TrueFriendsApp.Model
 {
-    class FavoriteContext : DbContext
+    class DataContext : DbContext
     {
-        public FavoriteContext(DbContextOptions<FavoriteContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
         {
             Database.EnsureCreated();
         }
+        public DbSet<Advert> Advert { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<Favorite> Favorite { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Text;
 using TrueFriendsApp.DB;
 using TrueFriendsApp.Model;
@@ -9,52 +11,55 @@ namespace TrueFriendsApp.Classes
 {
     static class UnitOfWork
     {
-        private static SQLLocalServer db = new SQLLocalServer();
 
-        public static BindingList<User> GetUsers()
+        private static string StringConnection = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
+        private static DbContextOptionsBuilder<DataContext> optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+        private static DbContextOptions<DataContext> options = optionsBuilder.UseSqlServer(StringConnection).Options;
+        private static DataContext db = new DataContext(options);
+        private static AdvertRepository advertRepository;
+        private static UserRepository userRepository;
+        private static FavoriteRepository favoriteRepository;
+
+        public static AdvertRepository Adverts
         {
-            return db.GetUsers();
+            get
+            {
+                if (advertRepository == null)
+                    advertRepository = new AdvertRepository(db);
+                return advertRepository;
+            }
         }
 
-        public static void AddUser(string login, string password)
+        public static UserRepository Users
         {
-            db.AddUser(login, password);
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(db);
+                return userRepository;
+            }
         }
 
-        public static void CreateAdvert(string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
+        public static FavoriteRepository Favorites
         {
-
-            db.CreateAdvert(name, animalAge, animalWeight, kindOfAnimal, description, pictureString);
+            get
+            {
+                if (favoriteRepository == null)
+                    favoriteRepository = new FavoriteRepository(db);
+                return favoriteRepository;
+            }
+        }
+        public static void Save()
+        {
+            db.SaveChanges();
         }
 
-        public static void EditAdvert(int id, string name, int animalAge, decimal animalWeight, string kindOfAnimal, string description, string pictureString)
+        public static void Refresh()
         {
-            db.EditAdvert(id, name, animalAge, animalWeight, kindOfAnimal, description, pictureString);
-        }
-
-        public static void DeleteAdvert(Advert ad)
-        {
-            db.DeleteAdvert(ad);
-        }
-
-        public static BindingList<Advert> GetAdverts()
-        {
-            return db.GetAdverts();
-        }
-
-        public static BindingList<Advert> GetLatestAdverts(int amount)
-        {
-            return db.GetLatestAdverts(amount);
-        }
-
-        public static BindingList<Advert> GetFavoriteAdverts(int userID)
-        {
-            return db.GetFavoriteAdverts(userID);
-        }
-
-        public static void AddToFavorite(int userID, int advertID)
-        {
-            db.AddToFavorite(userID, advertID);
+            db = new DataContext(options);
+            advertRepository = new AdvertRepository(db);
+            userRepository = new UserRepository(db);
+            favoriteRepository = new FavoriteRepository(db);
         }
     }
 }

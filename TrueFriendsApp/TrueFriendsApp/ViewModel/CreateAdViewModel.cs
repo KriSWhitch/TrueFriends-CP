@@ -169,7 +169,8 @@ namespace TrueFriendsApp.ViewModel
             if (completenessFlag)
             {
                 Image = new Picture(ImageConverter.ConvertToBitmap(ImageSource as BitmapImage));
-                UnitOfWork.CreateAdvert(Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString);
+                Advert ad = new Advert(Name, AnimalAge, AnimalWeight, KindOfAnimal, Description, Image.PictureString, DateTime.Now);
+                UnitOfWork.Adverts.Create(ad);
                 MessageBox.Show(
                     "Объявление было успешно добавлено!",
                     "Успех!",

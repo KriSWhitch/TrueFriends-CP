@@ -151,7 +151,7 @@ namespace TrueFriendsApp.ViewModel
             MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить объявление?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                UnitOfWork.DeleteAdvert(Ad);
+                UnitOfWork.Adverts.Delete(Ad);
                 mainForm.LoadView(MainWindowViewType.Main);
             }
         }
@@ -164,7 +164,8 @@ namespace TrueFriendsApp.ViewModel
         public ICommand addToFavorite => new DelegateCommand(AddToFavorite);
         private void AddToFavorite()
         {
-            UnitOfWork.AddToFavorite(User.User_ID, Ad.Advert_ID);
+            Favorite favorite = new Favorite(User.User_ID, Ad.Advert_ID);
+            UnitOfWork.Favorites.Create(favorite);
         }
     }
 }
