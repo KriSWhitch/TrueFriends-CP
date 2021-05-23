@@ -271,7 +271,6 @@ namespace TrueFriendsApp.ViewModel
         public ICommand buttonPopUpLogout => new DelegateCommand(ButtonPopUpLogout);
         public void ButtonPopUpLogout()
         {
-            UnitOfWork.Refresh();
             new AuthorizationWindow().Show();
             mainForm.Close();
         }
@@ -279,7 +278,6 @@ namespace TrueFriendsApp.ViewModel
         public ICommand buttonPopUpRefresh => new DelegateCommand(ButtonPopUpRefresh);
         public void ButtonPopUpRefresh()
         {
-            UnitOfWork.Refresh();
             IEnumerable<User> users = UnitOfWork.Users.Get();
             foreach (User user in users)
             {

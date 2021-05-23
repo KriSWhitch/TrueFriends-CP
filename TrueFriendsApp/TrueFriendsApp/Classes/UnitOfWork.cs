@@ -24,8 +24,7 @@ namespace TrueFriendsApp.Classes
         {
             get
             {
-                if (advertRepository == null)
-                    advertRepository = new AdvertRepository(db);
+                Refresh();
                 return advertRepository;
             }
         }
@@ -34,8 +33,7 @@ namespace TrueFriendsApp.Classes
         {
             get
             {
-                if (userRepository == null)
-                    userRepository = new UserRepository(db);
+                Refresh();
                 return userRepository;
             }
         }
@@ -44,8 +42,7 @@ namespace TrueFriendsApp.Classes
         {
             get
             {
-                if (favoriteRepository == null)
-                    favoriteRepository = new FavoriteRepository(db);
+                Refresh();
                 return favoriteRepository;
             }
         }

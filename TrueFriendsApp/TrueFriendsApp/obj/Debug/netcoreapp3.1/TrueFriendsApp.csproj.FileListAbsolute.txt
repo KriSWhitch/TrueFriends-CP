@@ -273,7 +273,6 @@ D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\r
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.csprojAssemblyReference.cache
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\resources\lang.ru-RU.baml
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\resources\lang.baml
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\View\Pages\AdvertPage.baml
