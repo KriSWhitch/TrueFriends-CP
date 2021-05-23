@@ -305,3 +305,4 @@ D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\T
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.csproj.CoreCompileInputs.cache
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.csproj.CopyComplete
 D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.genruntimeconfig.cache
+D:\GitHub\TrueFriends-CP\TrueFriendsApp\TrueFriendsApp\obj\Debug\netcoreapp3.1\TrueFriendsApp.csprojAssemblyReference.cache

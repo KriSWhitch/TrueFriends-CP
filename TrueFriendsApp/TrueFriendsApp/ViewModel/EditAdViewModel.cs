@@ -147,10 +147,6 @@ namespace TrueFriendsApp.ViewModel
             {
                 ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
             }
-            else
-            {
-                MessageBox.Show("Вы должны выбрать картинку!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
         }
 
         public ICommand createAdButton => new DelegateCommand(CreateAdButton);
