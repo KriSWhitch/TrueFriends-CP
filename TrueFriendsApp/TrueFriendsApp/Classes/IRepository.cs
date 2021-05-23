@@ -6,7 +6,7 @@ using TrueFriendsApp.Model;
 
 namespace TrueFriendsApp.Classes
 {
-    interface IRepository<T>
+    interface IRepository<T> where T : class
     {
         void Create(T obj);
         IEnumerable<T> Get();

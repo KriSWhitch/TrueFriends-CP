@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Text;
-using TrueFriendsApp.DB;
+using TrueFriendsApp.Repository;
 using TrueFriendsApp.Model;
 
 namespace TrueFriendsApp.Classes

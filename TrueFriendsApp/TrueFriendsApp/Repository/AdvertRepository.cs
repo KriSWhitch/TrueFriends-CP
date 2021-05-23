@@ -9,7 +9,7 @@ using System.Windows;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
 
-namespace TrueFriendsApp.DB
+namespace TrueFriendsApp.Repository
 {
     class AdvertRepository : IRepository<Advert>
     {
