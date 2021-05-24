@@ -1,7 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

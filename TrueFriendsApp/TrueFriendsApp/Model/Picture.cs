@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Buffers.Text;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -8,7 +7,6 @@ using System.Xml.Serialization;
 
 namespace TrueFriendsApp
 {
-    //root name is called "picture"
     [XmlRoot(ElementName = "picture")]
     public class Picture
     {
@@ -22,18 +20,12 @@ namespace TrueFriendsApp
         }
         Bitmap source;
 
-        // Set serialization to IGNORE this property
-        // because the 'PictureByteArray' property
-        // is used instead to serialize
-        // the 'Picture' Bitmap as an array of bytes.
         [XmlIgnore]
         public Bitmap Source
         {
             get { return source; }
             set { source = value; }
         }
-        // Set PictureByteArray Property 
-        // to be an attribute of the Picture node 
         
         public string PictureString
         {
@@ -42,7 +34,7 @@ namespace TrueFriendsApp
                 MemoryStream ms = new MemoryStream();
                 source.Save(ms, ImageFormat.Jpeg);
                 byte[] byteImage = ms.ToArray();
-                return Convert.ToBase64String(byteImage); // Get Base64
+                return Convert.ToBase64String(byteImage);
             }
             set
             {
@@ -60,7 +52,6 @@ namespace TrueFriendsApp
         {
             get
             {
-                //get a TypeConverter object for converting Bitmap to bytes
                 TypeConverter converter = TypeDescriptor.GetConverter(typeof(Bitmap));
                 return (byte[])converter.ConvertTo(source, typeof(byte[]));
             }

@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
@@ -54,18 +52,20 @@ namespace TrueFriendsApp.Repository
                         select item
                     ).First();
                     db.Favorite.Remove(favoriteToRemove);
+                    db.SaveChanges();
                     MessageBox.Show("Объявление убрано из избранного!");
                 }
                 else
                 {
                     db.Favorite.Add(favorite);
+                    db.SaveChanges();
                     MessageBox.Show("Объявление добавлено в избранное!");
                 }
-                db.SaveChanges();
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.InnerException.Message);
+                MessageBox.Show("Во время вашего взаимодействия с избранными объявлениями что-то пошло не так.. перезагрузите приложение и попробуйте снова!");
+                MessageBox.Show($"{e.Message}");
             }
         }
 

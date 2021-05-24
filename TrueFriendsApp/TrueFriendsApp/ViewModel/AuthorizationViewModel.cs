@@ -1,10 +1,5 @@
 ﻿using DevExpress.Mvvm;
-using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using TrueFriendsApp.View.Pages;
 using TrueFriendsApp.View.Windows;
 

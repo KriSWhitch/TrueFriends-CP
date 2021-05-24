@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Text;
 using TrueFriendsApp.Repository;
 using TrueFriendsApp.Model;
+using System.Windows;
 
 namespace TrueFriendsApp.Classes
 {
@@ -53,10 +50,18 @@ namespace TrueFriendsApp.Classes
 
         public static void Refresh()
         {
-            db = new DataContext(options);
-            advertRepository = new AdvertRepository(db);
-            userRepository = new UserRepository(db);
-            favoriteRepository = new FavoriteRepository(db);
+            try
+            {
+                db = new DataContext(options);
+                advertRepository = new AdvertRepository(db);
+                userRepository = new UserRepository(db);
+                favoriteRepository = new FavoriteRepository(db);
+            }
+            catch
+            {
+                MessageBox.Show("Во время работы с базой данных произошла ошибка. Проверьте работу сервера, или попробуйте вернуться позже!");
+                Application.Current.Shutdown();
+            }
         }
     }
 }

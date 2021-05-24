@@ -4,7 +4,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
-using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
 {

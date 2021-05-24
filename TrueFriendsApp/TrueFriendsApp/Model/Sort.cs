@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrueFriendsApp.Model
+﻿namespace TrueFriendsApp.Model
 {
     class Sort
     {

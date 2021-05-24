@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,7 +7,6 @@ using DevExpress.Mvvm;
 using FontAwesome.WPF;
 using Microsoft.Win32;
 using TrueFriendsApp.Classes;
-using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
 {

@@ -1,16 +1,11 @@
 ﻿using DevExpress.Mvvm;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows;
 using System.Windows.Input;
 using TrueFriendsApp.Classes;
 using TrueFriendsApp.Model;
-using TrueFriendsApp.View;
 
 namespace TrueFriendsApp.ViewModel
 {
